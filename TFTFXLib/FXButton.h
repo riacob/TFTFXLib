@@ -31,7 +31,7 @@ public:
     }
     void setPosition(uint16_t x, uint16_t y)
     {
-        sizex = x;
+        startx = x;
         starty = y;
     }
     void setSize(uint16_t sizeX, uint16_t sizeY)
