@@ -36,10 +36,6 @@ void loop()
     tft.getTouch(&x, &y);
     screen1->setTouchPos(x, y);
     touchUpdated = false;
-    debug("Touch at x");
-    debug(x);
-    debug(" y");
-    debugln(y);
   }
   // Update screen every 5ms
   if (millis() - ms_start >= 5)

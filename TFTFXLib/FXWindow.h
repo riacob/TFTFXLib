@@ -16,9 +16,13 @@
 class FXWindow
 {
 protected:
+    // Last X touch point
     uint16_t touchx = 0;
+    // Last Y touch point
     uint16_t touchy = 0;
+    // millis() when the touch points where updated
     long touchtime = 0;
+
 public:
     TFT_eSPI *tft;
 

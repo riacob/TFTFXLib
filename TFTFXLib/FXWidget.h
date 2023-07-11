@@ -35,6 +35,8 @@ protected:
     bool isValid = false;
     // If true the sprite for the widget is currently drawn
     bool isVisible = true;
+    // Background color of the whole sprite
+    uint32_t widgetbgcolor = TFT_WHITE;
 
     FXWidget(FXWindow *w)
     {
@@ -59,12 +61,12 @@ protected:
     {
         if (!isValid)
         {
-            //debugln("[fxwidget.h] drawWidget() widget invalid");
+            // debugln("[fxwidget.h] drawWidget() widget invalid");
             return;
         }
         if (!isVisible)
         {
-            //debugln("[fxwidget.h] drawWidget() widget invisible");
+            // debugln("[fxwidget.h] drawWidget() widget invisible");
             return;
         }
         /*debug("[fxwidget.h] drawWidget() startx");
@@ -77,26 +79,48 @@ protected:
     {
         if (!isValid)
         {
-            //debugln("[fxwidget.h] deleteWidget() widget invalid");
+            // debugln("[fxwidget.h] deleteWidget() widget invalid");
             return;
         }
-        //debugln("[fxwidget.h] deleteWidget()");
+        // debugln("[fxwidget.h] deleteWidget()");
         widget->deleteSprite();
         isValid = false;
     }
 
 public:
-    void setVisible()
+    /**
+     * @brief Makes the widget visible
+     *
+     */
+    void setWidgetVisible()
     {
         isVisible = true;
     }
-    void setInvisible()
+    /**
+     * @brief Makes the widget invisible
+     *
+     */
+    void setWidgetInvisible()
     {
         isVisible = false;
     }
-    void setVisibility(bool visible)
+    /**
+     * @brief Sets the visibility of the widget
+     *
+     * @param visible: true if the widget should be visible
+     */
+    void setWidgetVisibility(bool visible)
     {
         isVisible = visible;
+    }
+    /**
+     * @brief Sets the background color of the widget
+     *
+     * @param color: Background color
+     */
+    void setWidgetBackgroundColor(uint32_t color)
+    {
+        widgetbgcolor = color;
     }
 };
 
