@@ -2,9 +2,11 @@
 #include <SPI.h>
 #include <FS.h>
 #include <SPIFFS.h>
-#include "screen.h"
+#include "MyScreen.h"
+#include "FXWindowManager.h"
 
 TFT_eSPI tft = TFT_eSPI();
+FXWindowManager mgr(&tft);
 
 MyScreen *screen1;
 volatile bool touchUpdated = false;
@@ -22,7 +24,7 @@ void setup()
   tft.setTouch(calData);
   tft.setRotation(0);
   tft.fillScreen(TFT_BLACK);
-  screen1 = new MyScreen(&tft);
+  screen1 = new MyScreen(&tft,&mgr);
   attachInterrupt(22, touchISR, FALLING);
   Serial.begin(115200);
   ms_start = millis();

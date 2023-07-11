@@ -22,11 +22,13 @@ public:
      * @brief Button shapes
      *
      */
-    enum class FXButtonShapes
+    enum class FXButtonStyles
     {
-        RECT,
-        ROUND_RECT,
-        ELLIPSE
+        //FILL_RECT,
+        FILL_ROUND_RECT,
+        FILL_ELLIPSE,
+        FILL_RECT_H_GRADIENT,
+        // FILL_RECT_V_GRADIENT
     };
 
     /**
@@ -50,16 +52,31 @@ protected:
     uint16_t btnstarty = 0;
     // Callback pointer on button press
     void (*pressedcallback)();
+
     // Shape of the button
-    FXButtonShapes btnshape = FXButtonShapes::RECT;
+    FXButtonStyles btnstyle = FXButtonStyles::FILL_ROUND_RECT;
+    // Button corner radius
+    uint16_t btncornerradius = 0;
+    // Button colors if style is FILL_RECT_H_GRADIENT or FILL_RECT_V_GRADIENT
+    uint32_t btncolor1 = TFT_WHITE;
+    uint32_t btncolor2 = TFT_BLACK;
+
     // Contents of the button
     FXButtonContentTypes btncontenttype = FXButtonContentTypes::TEXT;
     // Button text if content type is TEXT
     String btntext = "";
+    // Button font if content type is TEXT
     uint8_t btnfont = 2;
+    // Button font size if content type is TEXT
     uint8_t btnfontsize = 1;
     // Icon path if content type is ICON
     uint8_t *btnicon = {0};
+
+    // Border of the button
+    bool btnborder = false;
+    uint16_t btnborderthickness = 1;
+    uint32_t btnbordercolor = TFT_WHITE;
+
     // Background color of the button
     uint32_t btnbgcolor = TFT_WHITE;
     // Foreground color of the button
@@ -106,31 +123,63 @@ public:
         widgetstarty = btnstarty;
         // create the widget
         createWidget();
+        // Draw widget background
+        widget->fillRect(widgetstartx, widgetstarty, widgetsizex, widgetsizey, widgetbgcolor);
         // add button to the widget
-        switch (btnshape)
+        switch (btnstyle)
         {
-        case FXButtonShapes::RECT:
+        /*case FXButtonStyles::FILL_RECT:
         {
-            // Draw widget background
-            widget->fillRect(widgetstartx, widgetstarty, widgetsizex, widgetsizey, widgetbgcolor);
-            // Draw button background
             widget->fillRect(btnstartx, btnstarty, btnsizex, btnsizey, btnbgcolor);
+            if (btnborder)
+            {
+                for (uint16_t i = 0; i < btnborderthickness; i++)
+                {
+                    widget->drawRect(btnstartx + i, btnstarty + i, btnsizex - 2 * i, btnsizey - 2 * i, btnbordercolor);
+                }
+            }
             break;
-        }
-        case FXButtonShapes::ROUND_RECT:
+        }*/
+        case FXButtonStyles::FILL_ROUND_RECT:
         {
-            // Draw widget background
-            // Draw button background
+            widget->fillRoundRect(btnstartx, btnstarty, btnsizex, btnsizey, btncornerradius, btnbgcolor);
+            if (btnborder)
+            {
+                for (uint16_t i = 0; i < btnborderthickness; i++)
+                {
+                    widget->drawRoundRect(btnstartx + i, btnstarty + i, btnsizex - 2 * i, btnsizey - 2 * i, btncornerradius - i, btnbordercolor);
+                }
+            }
             break;
         }
-        case FXButtonShapes::ELLIPSE:
+        case FXButtonStyles::FILL_ELLIPSE:
         {
-            // Draw widget background
-            // Draw button background
+            uint16_t ellipsex = btnstartx + btnsizex / 2;
+            uint16_t ellipsey = btnstarty + btnsizey / 2;
+            widget->fillEllipse(ellipsex, ellipsey, btnsizex / 2, btnsizey / 2, btnbgcolor);
+            if (btnborder)
+            {
+                for (uint16_t i = 0; i < btnborderthickness; i++)
+                {
+                    widget->drawEllipse(ellipsex, ellipsey, (btnsizex) / 2 - i, (btnsizey) / 2 - i, btnbordercolor);
+                }
+            }
+            break;
+        }
+        case FXButtonStyles::FILL_RECT_H_GRADIENT:
+        {
+            widget->fillRectHGradient(btnstartx, btnstarty, btnsizex, btnsizey, btncolor1, btncolor2);
+            if (btnborder)
+            {
+                for (uint16_t i = 0; i < btnborderthickness; i++)
+                {
+                    widget->drawRect(btnstartx + i, btnstarty + i, btnsizex - 2 * i, btnsizey - 2 * i, btnbordercolor);
+                }
+            }
             break;
         }
         }
-        // add text or icon to the widget
+        // add text or icon to the button
         switch (btncontenttype)
         {
         case FXButtonContentTypes::TEXT:
@@ -144,7 +193,7 @@ public:
             uint16_t startX = btnstartx + ((btnsizex - fontSizeX) / 2);
             uint16_t startY = btnstarty + ((btnsizey - fontSizeY) / 2);
             // Print the text
-            widget->drawString(btntext,startX,startY);
+            widget->drawString(btntext, startX, startY);
             break;
         }
         case FXButtonContentTypes::ICON:
@@ -152,6 +201,7 @@ public:
             break;
         }
         }
+
         // draw the widget on the screen
         drawWidget();
         // delete the widget from PSRAM
@@ -185,11 +235,11 @@ public:
     /**
      * @brief Sets the shape of the button
      *
-     * @param shape: Shape of the button
+     * @param style: Shape of the button
      */
-    void setButtonShape(FXButtonShapes shape)
+    void setButtonStyle(FXButtonStyles style)
     {
-        btnshape = shape;
+        btnstyle = style;
     }
     /**
      * @brief Sets the foreground color of the button
@@ -209,15 +259,36 @@ public:
     {
         btnbgcolor = color;
     }
-    void setButtonText(String text, uint8_t font, uint8_t fontSize) {
+    void setButtonText(String text, uint8_t font, uint8_t fontSize)
+    {
         btncontenttype = FXButtonContentTypes::TEXT;
         btntext = text;
         btnfont = font;
         btnfontsize = fontSize;
     }
-    void setButtonIcon(uint8_t *icon) {
+    void setButtonIcon(uint8_t *icon)
+    {
         btncontenttype = FXButtonContentTypes::ICON;
         btnicon = icon;
+    }
+    void setButtonGradientColors(uint32_t color1, uint32_t color2)
+    {
+        btncolor1 = color1;
+        btncolor2 = color2;
+    }
+    void setButtonBorder(uint16_t thickness, uint32_t color)
+    {
+        btnborder = true;
+        btnborderthickness = thickness;
+        btnbordercolor = color;
+    }
+    void removeButtonBorder()
+    {
+        btnborder = false;
+    }
+    void setCornerRadius(uint16_t radius)
+    {
+        btncornerradius = radius;
     }
 };
 
