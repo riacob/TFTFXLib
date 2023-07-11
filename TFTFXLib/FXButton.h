@@ -17,6 +17,9 @@
 
 class FXButton : public FXWidget
 {
+private:
+    void (*pressedcallback)();
+
 protected:
     uint16_t sizex = 0;
     uint16_t sizey = 0;
@@ -41,7 +44,6 @@ public:
     }
     void draw()
     {
-        debugln("[fxbutton.h] drawing button");
         // If no tooltip is present we don't need to make the
         // widget size any bigger than the button size
         widgetsizex = sizex;
@@ -52,11 +54,25 @@ public:
         createWidget();
         // add button to the widget
         widget->fillScreen(TFT_WHITE);
-        widget->fillRect(startx,starty,sizex,sizey,TFT_WHITE);
+        widget->fillRect(startx, starty, sizex, sizey, TFT_WHITE);
         // draw the widget on the screen
         drawWidget();
         // delete the widget from PSRAM
         deleteWidget();
+    }
+    void setPressedCallback(void (*f)())
+    {
+        pressedcallback = f;
+    }
+    void touchAt(uint16_t x, uint16_t y)
+    {
+        // Check if the touch is in any position where a callback should be called
+        // Button press
+        if (x > startx && x < startx + sizex && y > starty && y < starty + sizey)
+        {
+            //debugln("[fxbutton.h] touched");
+            pressedcallback();
+        }
     }
 };
 
