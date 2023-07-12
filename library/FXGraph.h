@@ -37,9 +37,16 @@ private:
     float offset = 0;
     // If the dots are to be connected or not
     bool connectdots = true;
+    // Biggest value in dataset
     float biggestval = 0;
+    // Smallest value in dataset
     float smallestval = 0;
+    // Average value of dataset
     float avgval = 0;
+    // If the offset is automatically adjusted based on the average value
+    bool autooffset = true;
+    // If the scaling is automatically adjusted based on the biggest value
+    bool autoscaling = true;
 
     /**
      * @brief Renders the graph on the screen
@@ -51,6 +58,7 @@ private:
         // Find the maximum and minimum values of the graph
         for (i = 0; i < yvalscnt; i++)
         {
+            // If values are negative module them first
             if (yvals[i] < 0)
             {
                 if (yvals[i] * -1 > biggestval)
@@ -62,6 +70,7 @@ private:
                     smallestval = yvals[i];
                 }
             }
+            // Else just check them
             else
             {
                 if (yvals[i] > biggestval)
@@ -73,18 +82,25 @@ private:
                     smallestval = yvals[i];
                 }
             }
-            avgval+=yvals[i];
+            // Increment avgval by the current f(x)
+            avgval += yvals[i];
         }
-        avgval/=yvalscnt;
+        // Divide avgval by the number of values to obtain the average
+        avgval /= yvalscnt;
         // Find the scaling factor
-        scalingfactor = biggestval / widgetsizey;
+        if (autoscaling)
+        {
+            scalingfactor = biggestval / widgetsizey;
+        }
         // Find the offset
-        offset = (widgetsizey/2)-(avgval*scalingfactor);
+        if (autooffset)
+        {
+            offset = (widgetsizey / 2) - (avgval * scalingfactor);
+        }
         //  Render the scaled graph
         //  Don't render the graph points outside of the wiget
         for (i = 0; (i < yvalscnt) && (i < widgetsizex); i++)
         {
-            debugln(offset);
             widget->drawPixel(i, yvals[i] * scalingfactor + offset, linecolor);
             // (i < yvalscnt - 1) overflow because this loop checks for yvals[i+1]
             if (i < yvalscnt - 1)
@@ -161,37 +177,10 @@ public:
         yvalscnt = datapoints;
     }
 
-    /**
-     * @brief Gets the scaling factor of the graph's values
-     *
-     * @return float: Scaling factor
-     */
-    float getScalingFactor()
-    {
-        return scalingfactor;
-    }
-
-    /**
-     * @brief Sets the scaling factor of the graph's values
-     *
-     * @param factor: Scaling factor
-     */
-    void setScalingFactor(float factor)
-    {
-        scalingfactor = factor;
-    }
-
-    /**
-     * @brief Sets the connectdots option to true
-     */
     void connectDots()
     {
         connectdots = true;
     }
-
-    /**
-     * @brief Sets the connectdots option to false
-     */
     void disconnectDots()
     {
         connectdots = false;
@@ -219,6 +208,36 @@ public:
     float getSmallestValue()
     {
         return smallestval;
+    }
+    float getAverageValue()
+    {
+        return avgval;
+    }
+    float getOffset()
+    {
+        return offset;
+    }
+    void setAutoOffset()
+    {
+        autooffset = true;
+    }
+    void setManualOffset(float ofst)
+    {
+        autooffset = false;
+        offset = ofst;
+    }
+    float getScalingFactor()
+    {
+        return scalingfactor;
+    }
+    void setAutoScaling()
+    {
+        autoscaling = true;
+    }
+    void setManualScaling(float scaling)
+    {
+        autoscaling = false;
+        scalingfactor = scaling;
     }
 };
 
