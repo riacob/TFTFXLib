@@ -24,7 +24,7 @@ namespace MyScreenNamespace
     /* USER CALLBACKS BEGIN */
     void btn2callback()
     {
-        debugln("[myscreen.h] btn2 callback");
+        //debugln("[myscreen.h] btn2 callback");
         w->tft->fillScreen(TFT_WHITE);
         w->jumpToWindow(1);
     }

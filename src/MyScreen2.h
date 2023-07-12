@@ -22,9 +22,9 @@ namespace MyScreen2Namespace
     /* USER CALLBACKS BEGIN */
     void btn2callback()
     {
-        debugln("[myscreen2.h] btn2 callback");
+        //debugln("[myscreen2.h] btn2 callback");
         w->tft->fillScreen(TFT_WHITE);
-        w->jumpToWindow(0);
+        w->jumpToWindow(2);
     }
     /* USER CALLBACKS END */
 };
@@ -44,8 +44,7 @@ public:
     MyScreen2(TFT_eSPI *t, size_t windowID) : FXWindow(t, windowID)
     {
         w = (FXWindow *)this;
-        MyScreen2Namespace::w = w;
-    }
+        MyScreen2Namespace::w = w;    }
     void drawUI() override
     {
         // debugln("[screen.h] drawing ui");

@@ -36,7 +36,6 @@ void setup()
   uint16_t calData[5] = {338, 3387, 343, 3489, 4} ;
   tft.setTouch(calData);
   tft.setRotation(0);
-  tft.fillScreen(TFT_BLACK);
   attachInterrupt(22, touchISR, FALLING);
   Serial.begin(115200);
 }

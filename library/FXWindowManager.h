@@ -14,9 +14,23 @@
 #include "Includes.h"
 #include "FXWindow.h"
 
+#define _HANDLEWINDOWINSTANCE(x, y)                                    \
+    if (currentwindowidx == y)                                         \
+    {                                                                  \
+        if (!currentwindowptr)                                         \
+        {                                                              \
+            currentwindowptr = new x(tft, y);                          \
+        }                                                              \
+        if (currentwindowptr && currentwindowptr->getWindowID() != y)  \
+        {                                                              \
+            delete currentwindowptr, currentwindowptr = new x(tft, y); \
+        }                                                              \
+    }
+
 /* BEGIN USER SCREEN INCLUSION */
 #include "MyScreen.h"
 #include "MyScreen2.h"
+#include "PwdScreen.h"
 /* END USER SCREEN INCLUSION */
 
 class FXWindowManager
@@ -27,6 +41,7 @@ public:
         /* BEGIN USER WINDOW NAME DEFINITIONS */
         MAIN,
         CONFIG,
+        PWD,
         /* END USER WINDOW NAME DEFINITIONS */
         TOT_WINDOWS
     };
@@ -48,43 +63,11 @@ public:
     }
     void doTick()
     {
-        switch (currentwindowidx)
-        {
         /* BEGIN USER WINDOW ACTIONS DEFINITIONS */
-        case MAIN:
-        {
-            currentwindowidx = MAIN;
-            // Current window only gets deleted and reinstantiated if inexistent or not MAIN
-            if (!currentwindowptr)
-            {
-                currentwindowptr = new MyScreen(tft, MAIN);
-                debugln("Creating MAIN window");
-            }
-            if (currentwindowptr && currentwindowptr->getWindowID() != MAIN)
-            {
-                delete currentwindowptr;
-                currentwindowptr = new MyScreen(tft, MAIN);
-                debugln("Recreating MAIN window");
-            }
-            break;
-        }
-        case CONFIG:
-        {
-            // Current window only gets deleted and reinstantiated if inexistent or not CONFIG
-            currentwindowidx = CONFIG;
-            if (!currentwindowptr)
-            {
-                currentwindowptr = new MyScreen2(tft, CONFIG);
-            }
-            if (currentwindowptr && currentwindowptr->getWindowID() != CONFIG)
-            {
-                delete currentwindowptr;
-                currentwindowptr = new MyScreen2(tft, CONFIG);
-            }
-            break;
-        }
-            /* END USER WINDOW ACTIONS DEFINITIONS */
-        }
+        _HANDLEWINDOWINSTANCE(MyScreen, MAIN);
+        _HANDLEWINDOWINSTANCE(MyScreen2, CONFIG);
+        _HANDLEWINDOWINSTANCE(PwdScreen, PWD);
+        /* END USER WINDOW ACTIONS DEFINITIONS */
         if (touchpressed)
         {
             tft->getTouch(&touchx, &touchy);
@@ -94,6 +77,10 @@ public:
         currentwindowptr->drawUI();
         if (currentwindowptr->wasJumpRequested())
         {
+            debug("Jumping from ");
+            debug(currentwindowptr->getWindowID());
+            debug(" to ");
+            debugln(currentwindowptr->getNewWindow());
             currentwindowidx = currentwindowptr->getNewWindow();
             currentwindowptr->suppressJumpRequest();
         }
