@@ -15,7 +15,7 @@
 #include <Arduino.h>
 #include "FXWidget.h"
 
-class FXGraph : FXWidget
+class FXGraph : public FXWidget
 {
 private:
     // Graph background color

@@ -19,6 +19,8 @@ namespace MyScreenCallbacks
     FXWindow *w;
     /* USER CALLBACKS BEGIN */
     /* USER CALLBACKS END */
+    /* USER STATIC VARIABLES BEGIN */
+    /* USER STATIC VARIABLES END */
 };
 
 class MyScreen : public FXWindow

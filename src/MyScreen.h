@@ -14,6 +14,8 @@
 #include "FXWindow.h"
 #include "FXButton.h"
 #include "FXGraph.h"
+#include "FXHProgressBar.h"
+#include "FXVProgressBar.h"
 
 namespace MyScreenCallbacks
 {
@@ -47,47 +49,39 @@ public:
     }
     void drawUI() override
     {
-        // debugln("[screen.h] drawing ui");
-
         /* MAIN USER CODE BEGIN */
 
         // Create fake graph data
-        float yvals[100];
+        float yvals[200];
         int i, j;
-        /*for (i = 0; i < 20; i++)
-        {
-            yvals[i] = 20;
-        }
-        for (i; i < 40; i++)
-        {
-            yvals[i] = -35;
-        }
-        for (i; i < 60; i++)
-        {
-            yvals[i] = 67;
-        }
-        for (i; i < 100; i++)
-        {
-            yvals[i] = 33;
-        }*/
-        for (i = 0; i < 100; i++) {
-            yvals[i] = analogRead(A0);
+        for (i = 0; i < 200; i++) {
+            yvals[i] = random(-50,50);
         }
 
-        // FXButton btn1(w);
-        // w->tft->fillScreen(TFT_WHITE);
         FXButton btn2(w);
         FXGraph graph(w);
-        btn2.setPressedCallback(MyScreenCallbacks::btn2callback);
+        FXHProgressBar pbar(w);
+        FXVProgressBar pbar2(w);
+
+        pbar.setPosition(10,450);
+        pbar.setSize(80,20);
+        pbar.setMultiplier(random(0,999)/1000.0);
+        pbar.set
+
+        pbar2.setPosition(0,0);
+        pbar2.setSize(20,80);
+        pbar2.setMultiplier(random(0,999)/1000.0);
+        pbar2.invert();
+
         graph.setPosition(63, 250);
-        graph.setSize(100, 100);
-        graph.setData(yvals, 100);
+        graph.setSize(200,120);
+        graph.setData(yvals, 200);
         graph.setGraphBackgroundColor(TFT_WHITE);
         graph.setGraphBorderColor(TFT_BLACK);
         graph.setGraphLineColor(TFT_BLACK);
         graph.setGraphDetailColor(TFT_LIGHTGREY);
-        //graph.setScalingFactor(0.1);
-        // btn1.setSize(70, 30);
+
+        btn2.setPressedCallback(MyScreenCallbacks::btn2callback);
         btn2.setButtonStyle(FXButton::FXButtonStyles::FILL_RECT_V_GRADIENT);
         btn2.setButtonGradientColors(TFT_BLUE, TFT_YELLOW);
         btn2.setButtonBorder(4, TFT_CYAN);
@@ -97,9 +91,11 @@ public:
         btn2.setButtonBackgroundColor(TFT_PURPLE);
         btn2.setButtonForegroundColor(TFT_WHITE);
         btn2.setButtonText("Button", 2, 1);
-        // btn1.draw();
+
         graph.draw();
         btn2.draw();
+        pbar.draw();
+        pbar2.draw();
         btn2.touchAt(touchx, touchy);
 
         /* MAIN USER CODE END */

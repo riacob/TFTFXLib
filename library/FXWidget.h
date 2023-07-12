@@ -46,12 +46,20 @@ protected:
     {
         delete widget;
     }
+    /**
+     * @brief Creates instance of TFT_eSprite
+     * 
+     */
     void createWidget()
     {
         widget = new TFT_eSprite(parent->tft);
         widget->createSprite(widgetsizex, widgetsizey);
         isValid = true;
     }
+    /**
+     * @brief Pushes instance of TFT_eSprite to TFT
+     * 
+     */
     void drawWidget()
     {
         if (!isValid)
@@ -64,6 +72,10 @@ protected:
         }
         widget->pushSprite(widgetstartx, widgetstarty);
     }
+    /**
+     * @brief Removes instance of TFT_eSprite
+     * 
+     */
     void deleteWidget()
     {
         if (!isValid)
@@ -109,6 +121,10 @@ public:
     {
         widgetbgcolor = color;
     }
+    /**
+     * @brief Clears the widget (by masking it with bgcolor)
+     * 
+     */
     void clearWidget()
     {
         deleteWidget();
