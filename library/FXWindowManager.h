@@ -20,10 +20,12 @@
         if (!currentwindowptr)                                         \
         {                                                              \
             currentwindowptr = new x(tft, y);                          \
+            currentwindowptr->tft->fillScreen(TFT_WHITE);              \
         }                                                              \
         if (currentwindowptr && currentwindowptr->getWindowID() != y)  \
         {                                                              \
             delete currentwindowptr, currentwindowptr = new x(tft, y); \
+            currentwindowptr->tft->fillScreen(TFT_WHITE);              \
         }                                                              \
     }
 
