@@ -8,12 +8,7 @@
  * @copyright Copyright (c) 2023
  * 
  */
-#include <Arduino.h>
-#include <SPI.h>
-#include <FS.h>
-#include <SPIFFS.h>
-#include <TFT_eSPI.h>
-#include "MyScreen.h"
+#include "Includes.h"
 #include "FXWindowManager.h"
 
 TFT_eSPI tft = TFT_eSPI();
@@ -38,9 +33,13 @@ void setup()
   tft.setRotation(0);
   attachInterrupt(22, touchISR, FALLING);
   Serial.begin(115200);
+  /* BEGIN USER SETUP CODE */
+  /* END USER SETUP CODE */
 }
 
 void loop()
 {
   mgr.doTick();
+  /* BEGIN USER LOOP CODE */
+  /* END USER LOOP CODE */
 }

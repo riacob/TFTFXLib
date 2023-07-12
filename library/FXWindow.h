@@ -1,7 +1,7 @@
 /**
  * @file FXWindow.h
  * @author Riccardo Iacob
- * @brief
+ * @brief FXWindow Parent Class
  * @version 0.1
  * @date 2023-07-11
  *

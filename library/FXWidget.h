@@ -1,7 +1,7 @@
 /**
  * @file FXWidget.h
  * @author Riccardo Iacob
- * @brief Main widget class. All widgets are inherited from this superclass.
+ * @brief FXWidget Parent Class
  * @version 0.1
  * @date 2023-07-11
  *

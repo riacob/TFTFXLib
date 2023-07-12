@@ -1,7 +1,7 @@
 /**
  * @file FXWindowManager.h
  * @author Riccardo Iacob
- * @brief
+ * @brief FXWindowManager Class
  * @version 0.1
  * @date 2023-07-12
  *

@@ -1,6 +1,8 @@
 # Using the library
-NO  CONFIGURATION WIZARD IS YET AVAILABLE and won't be available unless enough interest and collaboration is shown to this library.
+The library is still in early development, thus the documentation is practically non-existant.
 <br>
-User creates and edits screens called MyScreen.h (unique name for each screen);
+Refer to the comments in the code (especially in *screen*.h and FXWindowManager.h) to understand how to setup the library to create windows with widgets.
 <br>
-User edits FXWindowManager.h to handle all the screens they created; this allows a "state machine" behavior where the screen contents and touch mappings are automatically adjusted depending on the currently displayed window.
+To create a new widget, you should implement the parent class FXWidget() and build the new widget similarly to the existing ones.
+<br>
+Widgets are mainly composed of a draw() method and some style/content settings, as well as callback function settings.
