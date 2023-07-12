@@ -16,11 +16,11 @@
 
 class FXWidget
 {
-protected:
+private:
     // Parent window (the window in which the widget is present)
     FXWindow *parent;
-    // TFT screen object reference, there shall be one screen per program
-    TFT_eSPI *_tft;
+
+protected:
     // TFT sprite object reference
     TFT_eSprite *widget;
     // Start X of the widget's bounds
@@ -41,7 +41,6 @@ protected:
     FXWidget(FXWindow *w)
     {
         parent = w;
-        _tft = w->tft;
     }
     ~FXWidget()
     {
@@ -49,7 +48,7 @@ protected:
     }
     void createWidget()
     {
-        widget = new TFT_eSprite(_tft);
+        widget = new TFT_eSprite(parent->tft);
         widget->createSprite(widgetsizex, widgetsizey);
         isValid = true;
     }

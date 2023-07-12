@@ -82,11 +82,15 @@ protected:
     uint32_t btnfgcolor = TFT_BLACK;
 
 public:
-    FXButton(FXWindow *w) : FXWidget(w)
+    /**
+     * @brief Constructs a new FXButton object
+     *
+     * @param parent: The window in which the button (widget) is in
+     */
+    FXButton(FXWindow *parent) : FXWidget(parent)
     {
-        parent = w;
-        _tft = w->tft;
     }
+
     /**
      * @brief Sets the position of the widget
      *
@@ -98,6 +102,7 @@ public:
         widgetstartx = x;
         widgetstarty = y;
     }
+
     /**
      * @brief Sets the size of the button
      *
@@ -109,6 +114,7 @@ public:
         btnsizex = sizeX;
         btnsizey = sizeY;
     }
+
     /**
      * @brief Renders the button on the screen
      */
@@ -120,9 +126,9 @@ public:
         btnstarty = 0;
         widgetsizex = btnsizex;
         widgetsizey = btnsizey;
-        //widgetstartx = btnstartx;
-        //widgetstarty = btnstarty;
-        // create the widget
+        // widgetstartx = btnstartx;
+        // widgetstarty = btnstarty;
+        //  create the widget
         createWidget();
         // Draw widget background
         widget->fillRect(0, 0, widgetsizex, widgetsizey, widgetbgcolor);
@@ -209,6 +215,7 @@ public:
         // delete the widget from PSRAM
         deleteWidget();
     }
+
     /**
      * @brief Sets the callback that gets called when the button gets pressed
      *
@@ -218,6 +225,7 @@ public:
     {
         pressedcallback = f;
     }
+
     /**
      * @brief Maps x and y coordinates to callbacks, if found executes them, else does nothing
      *
@@ -233,6 +241,7 @@ public:
             pressedcallback();
         }
     }
+
     /**
      * @brief Sets the shape of the button
      *
@@ -242,6 +251,7 @@ public:
     {
         btnstyle = style;
     }
+
     /**
      * @brief Sets the foreground color of the button
      *
@@ -251,6 +261,7 @@ public:
     {
         btnfgcolor = color;
     }
+
     /**
      * @brief Sets the background color of the button
      *
@@ -260,6 +271,14 @@ public:
     {
         btnbgcolor = color;
     }
+
+    /**
+     * @brief Sets the button text. Mutual alternative to setButtonIcon().
+     *
+     * @param text
+     * @param font
+     * @param fontSize
+     */
     void setButtonText(String text, uint8_t font, uint8_t fontSize)
     {
         btncontenttype = FXButtonContentTypes::TEXT;
@@ -267,26 +286,57 @@ public:
         btnfont = font;
         btnfontsize = fontSize;
     }
+
+    /**
+     * @brief Sets the button's icon. Mutual alternative to setButtonText().
+     *
+     * @param icon
+     */
     void setButtonIcon(uint8_t *icon)
     {
         btncontenttype = FXButtonContentTypes::ICON;
         btnicon = icon;
     }
+
+    /**
+     * @brief Sets the gradient colors if using FXButtonStyles::FILL_H_GRADIENT or FXButtonStyles::FILL_V_GRADIENT
+     *
+     * @param color1: The first (leftmost or downmost) color
+     * @param color2: The second (rightmost or upmost) color
+     */
     void setButtonGradientColors(uint32_t color1, uint32_t color2)
     {
         btncolor1 = color1;
         btncolor2 = color2;
     }
+
+    /**
+     * @brief Sets a border for the button according to the given parameters
+     *
+     * @param thickness: Border thickness in px
+     * @param color: Border color
+     */
     void setButtonBorder(uint16_t thickness, uint32_t color)
     {
         btnborder = true;
         btnborderthickness = thickness;
         btnbordercolor = color;
     }
+
+    /**
+     * @brief Removes the button's border
+     *
+     */
     void removeButtonBorder()
     {
         btnborder = false;
     }
+
+    /**
+     * @brief Sets the corner radius of the rounded rectangle if using FXButtonStyles::FILL_ROUND_RECT
+     *
+     * @param radius: Corner radius
+     */
     void setCornerRadius(uint16_t radius)
     {
         btncornerradius = radius;

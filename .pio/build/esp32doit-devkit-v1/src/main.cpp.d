@@ -223,5 +223,5 @@
  .pio/libdeps/esp32doit-devkit-v1/TFT_eSPI/Extensions/Sprite.h \
  src/MyScreen.h library/FXWindow.h library/Includes.h library/Debug.h \
  library/FXButton.h library/FXWidget.h library/FXWindow.h \
- library/FXWindowManager.h src/MyScreen.h src/MyScreen2.h \
- library/icons/IconCog_63.h
+ library/FXGraph.h library/FXWindowManager.h src/MyScreen.h \
+ src/MyScreen2.h library/icons/IconCog_63.h
