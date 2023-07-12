@@ -70,6 +70,7 @@ public:
             tft->getTouch(&touchx, &touchy);
             currentwindowptr->setTouchPos(touchx, touchy);
             touchpressed = false;
+            debugln("touch pressed");
         }
         currentwindowptr->drawUI();
         if (currentwindowptr->wasJumpRequested())

@@ -88,7 +88,7 @@ public:
         _tft = w->tft;
     }
     /**
-     * @brief Sets the position of the button
+     * @brief Sets the position of the widget
      *
      * @param x: X position
      * @param y: Y position
@@ -228,7 +228,7 @@ public:
     {
         // Check if the touch is in any position where a callback should be called
         // Button press
-        if (x > btnstartx && x < btnstartx + btnsizex && y > btnstarty && y < btnstarty + btnsizey)
+        if (x > widgetstartx && x < widgetstartx + btnsizex && y > widgetstarty && y < widgetstarty + btnsizey)
         {
             pressedcallback();
         }

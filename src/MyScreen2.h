@@ -71,10 +71,6 @@ public:
         btn2.draw();
         btn2.touchAt(touchx, touchy);
 
-        while (1) {
-            asm("");
-        }
-
         /* MAIN USER CODE END */
     }
 };

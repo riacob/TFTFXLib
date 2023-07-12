@@ -60,7 +60,7 @@ public:
         btn2.setButtonBorder(4, TFT_CYAN);
         btn2.setSize(250, 90);
         btn2.setCornerRadius(45);
-        btn2.setPosition(0, 0);
+        btn2.setPosition(20, 132);
         btn2.setButtonBackgroundColor(TFT_PURPLE);
         btn2.setButtonForegroundColor(TFT_WHITE);
         btn2.setButtonText("Button", 2, 1);

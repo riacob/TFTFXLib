@@ -52,10 +52,6 @@ protected:
         widget = new TFT_eSprite(_tft);
         widget->createSprite(widgetsizex, widgetsizey);
         isValid = true;
-        debug("widget sx");
-        debug(widgetsizex);
-        debug(" sy");
-        debugln(widgetsizey);
     }
     void drawWidget()
     {
@@ -68,10 +64,6 @@ protected:
             return;
         }
         widget->pushSprite(widgetstartx, widgetstarty);
-        debug("widget stx");
-        debug(widgetstartx);
-        debug(" sty");
-        debugln(widgetstarty);
     }
     void deleteWidget()
     {
