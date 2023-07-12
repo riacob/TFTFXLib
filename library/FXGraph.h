@@ -21,7 +21,7 @@ private:
     // Graph background color
     uint32_t bgcolor = TFT_YELLOW;
     // Graph color
-    uint32_t graphcolor = TFT_BLUE;
+    uint32_t linecolor = TFT_BLUE;
     // Graph detail color
     uint32_t detailcolor = TFT_LIGHTGREY;
     // Graph border color
@@ -37,18 +37,18 @@ private:
     float offset = 0;
     // If the dots are to be connected or not
     bool connectdots = true;
+    float biggestval = 0;
+    float smallestval = 0;
+    float avgval = 0;
 
     /**
      * @brief Renders the graph on the screen
-     * 
+     *
      */
     void renderGraph()
     {
-        float biggestval = 0;
-        float smallestval = 0;
         size_t i;
-        // To find the scaling factor:
-        // 1. Find the biggest (absolute) y value
+        // Find the maximum and minimum values of the graph
         for (i = 0; i < yvalscnt; i++)
         {
             if (yvals[i] < 0)
@@ -73,25 +73,30 @@ private:
                     smallestval = yvals[i];
                 }
             }
+            avgval+=yvals[i];
         }
-        // 2. Find the scaling factor and the offset
+        avgval/=yvalscnt;
+        // Find the scaling factor
         scalingfactor = biggestval / widgetsizey;
-        offset = (biggestval - smallestval)/2;
-        debugln(scalingfactor);
-        // debugln(scalingfactor);
-        //  3. Render the scaled graph
+        // Find the offset
+        offset = (widgetsizey/2)-(avgval*scalingfactor);
+        //  Render the scaled graph
         //  Don't render the graph points outside of the wiget
         for (i = 0; (i < yvalscnt) && (i < widgetsizex); i++)
         {
-            widget->drawPixel(i, yvals[i] * scalingfactor + offset, graphcolor);
-            // i < i-1 prevents overflow because this function checks for i+1
-            if (connectdots && (i < yvalscnt - 1))
+            debugln(offset);
+            widget->drawPixel(i, yvals[i] * scalingfactor + offset, linecolor);
+            // (i < yvalscnt - 1) overflow because this loop checks for yvals[i+1]
+            if (i < yvalscnt - 1)
             {
-                float pA = yvals[i] * scalingfactor + offset;
-                float pB = yvals[i + 1] * scalingfactor + offset;
-                if (pA != pB)
+                if (connectdots)
                 {
-                    widget->drawLine(i, pA, i + 1, pB, graphcolor);
+                    float pA = yvals[i] * scalingfactor + offset;
+                    float pB = yvals[i + 1] * scalingfactor + offset;
+                    if (pA != pB)
+                    {
+                        widget->drawLine(i, pA, i + 1, pB, linecolor);
+                    }
                 }
             }
         }
@@ -103,7 +108,7 @@ public:
     }
     /**
      * @brief Renders the graph window
-     * 
+     *
      */
     void draw()
     {
@@ -122,7 +127,7 @@ public:
 
     /**
      * @brief Sets the size of the graph window
-     * 
+     *
      * @param sizeX: X size
      * @param sizeY: Y size
      */
@@ -134,7 +139,7 @@ public:
 
     /**
      * @brief Sets the position of the graph window
-     * 
+     *
      * @param x: X position
      * @param y: Y position
      */
@@ -146,8 +151,8 @@ public:
 
     /**
      * @brief Sets the data points of the graph
-     * 
-     * @param yvalues: Y values array 
+     *
+     * @param yvalues: Y values array
      * @param datapoints: number of Y values in the array
      */
     void setData(float *yvalues, size_t datapoints)
@@ -158,19 +163,21 @@ public:
 
     /**
      * @brief Gets the scaling factor of the graph's values
-     * 
+     *
      * @return float: Scaling factor
      */
-    float getScalingFactor() {
+    float getScalingFactor()
+    {
         return scalingfactor;
     }
 
     /**
      * @brief Sets the scaling factor of the graph's values
-     * 
+     *
      * @param factor: Scaling factor
      */
-    void setScalingFactor(float factor) {
+    void setScalingFactor(float factor)
+    {
         scalingfactor = factor;
     }
 
@@ -188,6 +195,30 @@ public:
     void disconnectDots()
     {
         connectdots = false;
+    }
+    void setGraphBackgroundColor(uint32_t color)
+    {
+        bgcolor = color;
+    }
+    void setGraphLineColor(uint32_t color)
+    {
+        linecolor = color;
+    }
+    void setGraphDetailColor(uint32_t color)
+    {
+        detailcolor = color;
+    }
+    void setGraphBorderColor(uint32_t color)
+    {
+        bordercolor = color;
+    }
+    float getBiggestValue()
+    {
+        return biggestval;
+    }
+    float getSmallestValue()
+    {
+        return smallestval;
     }
 };
 

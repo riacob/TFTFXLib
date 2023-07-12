@@ -54,7 +54,7 @@ public:
         // Create fake graph data
         float yvals[100];
         int i, j;
-        for (i = 0; i < 20; i++)
+        /*for (i = 0; i < 20; i++)
         {
             yvals[i] = 20;
         }
@@ -69,6 +69,9 @@ public:
         for (i; i < 100; i++)
         {
             yvals[i] = 33;
+        }*/
+        for (i = 0; i < 100; i++) {
+            yvals[i] = analogRead(A0);
         }
 
         // FXButton btn1(w);
@@ -79,7 +82,11 @@ public:
         graph.setPosition(63, 250);
         graph.setSize(100, 100);
         graph.setData(yvals, 100);
-        //graph.setScalingFactor(1.0);
+        graph.setGraphBackgroundColor(TFT_WHITE);
+        graph.setGraphBorderColor(TFT_BLACK);
+        graph.setGraphLineColor(TFT_BLACK);
+        graph.setGraphDetailColor(TFT_LIGHTGREY);
+        //graph.setScalingFactor(0.1);
         // btn1.setSize(70, 30);
         btn2.setButtonStyle(FXButton::FXButtonStyles::FILL_RECT_V_GRADIENT);
         btn2.setButtonGradientColors(TFT_BLUE, TFT_YELLOW);
