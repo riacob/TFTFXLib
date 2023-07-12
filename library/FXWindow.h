@@ -65,6 +65,10 @@ public:
     {
         return wid;
     }
+    void resetTouch(){
+        touchx = 0;
+        touchy = 0;
+    }
 };
 
 #endif

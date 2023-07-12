@@ -21,7 +21,6 @@
 namespace MyScreenNamespace
 {
     FXWindow *w;
-    bool switchstate = 0;
     /* USER CALLBACKS BEGIN */
     void btn2callback()
     {
@@ -64,7 +63,7 @@ public:
         FXGraph graph(w);
         FXHProgressBar pbar(w);
         FXVProgressBar pbar2(w);
-        FXHSwitch hsw(w,&MyScreenNamespace::switchstate);
+        FXHSwitch hsw(w);
 
         pbar.setPosition(10,450);
         pbar.setSize(80,20);
@@ -104,8 +103,10 @@ public:
         btn2.draw();
         pbar.draw();
         pbar2.draw();
+
         btn2.touchAt(touchx, touchy);
         hsw.touchAt(touchx, touchy);
+        w->resetTouch();
 
         /* MAIN USER CODE END */
     }

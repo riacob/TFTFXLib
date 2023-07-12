@@ -32,19 +32,11 @@ protected:
     uint32_t offcolor = TFT_GREEN;
     uint32_t offaccentcolor = TFT_DARKGREEN;
     uint32_t bordercolor = TFT_BLACK;
-    bool *_state;
+    bool _state;
 
 public:
-    /**
-     * @brief Construct a new FXHSwitch object
-     *
-     * @param parent
-     * @param state: Pointer to a boolean variable which will be used to get and set the current switch state.
-     * This variable needs to be declared inside the namespace MyScreenNamespace in MyScreen.h (outside the class instance)
-     */
-    FXHSwitch(FXWindow *parent, bool *state) : FXWidget(parent)
+    FXHSwitch(FXWindow *parent) : FXWidget(parent)
     {
-        _state = state;
     }
     void draw()
     {
@@ -54,7 +46,7 @@ public:
         // Draw background
         widget->fillRoundRect(0, 0, widgetsizex, widgetsizey, cornerradius, bgcolor);
         // If ON
-        if (*_state)
+        if (_state)
         {
             widget->fillRoundRect(0, 0, widgetsizex, widgetsizey, cornerradius, onaccentcolor);
             widget->fillRoundRect(widgetsizex / 2, 0, widgetsizex / 2, widgetsizey, cornerradius, oncolor);
@@ -119,14 +111,14 @@ public:
         if (x > widgetstartx && x < widgetstartx + widgetsizex && y > widgetstarty && y < widgetstarty + widgetsizey)
         {
             // If turning OFF
-            if (*_state) {
-                *_state = 0;
+            if (_state) {
+                _state = 0;
                 if (switchedoffcallbackset) {switchedoffcallback();}
                 
             }
             // If turning ON
             else {
-                *_state = 1;
+                _state = 1;
                 if(switchedoncallbackset) {switchedoncallback();}
             }
             // Always

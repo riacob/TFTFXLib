@@ -54,21 +54,25 @@ public:
         case MAIN:
         {
             currentwindowidx = MAIN;
-            if (!currentwindowidx)
+            // Current window only gets deleted and reinstantiated if inexistent or not MAIN
+            if (!currentwindowptr)
             {
                 currentwindowptr = new MyScreen(tft, MAIN);
+                debugln("Creating MAIN window");
             }
             if (currentwindowptr && currentwindowptr->getWindowID() != MAIN)
             {
                 delete currentwindowptr;
                 currentwindowptr = new MyScreen(tft, MAIN);
+                debugln("Recreating MAIN window");
             }
             break;
         }
         case CONFIG:
         {
+            // Current window only gets deleted and reinstantiated if inexistent or not CONFIG
             currentwindowidx = CONFIG;
-            if (!currentwindowidx)
+            if (!currentwindowptr)
             {
                 currentwindowptr = new MyScreen2(tft, CONFIG);
             }
