@@ -4,7 +4,7 @@
  * @brief
  * @version 0.1
  * @date 2023-07-12
- * 
+ *
  * @copyright Copyright (c) 2023
  *
  */
@@ -15,6 +15,8 @@
 #include "FXWindow.h"
 
 /* BEGIN USER SCREEN INCLUSION */
+#include "MyScreen.h"
+#include "MyScreen2.h"
 /* END USER SCREEN INCLUSION */
 
 class FXWindowManager
@@ -23,6 +25,8 @@ public:
     enum Windows
     {
         /* BEGIN USER WINDOW NAME DEFINITIONS */
+        MAIN,
+        CONFIG,
         /* END USER WINDOW NAME DEFINITIONS */
         TOT_WINDOWS
     };
@@ -32,7 +36,7 @@ private:
     uint16_t touchx;
     uint16_t touchy;
     bool touchpressed = false;
-    FXWindow *currentwindowptr;
+    FXWindow *currentwindowptr = NULL;
     size_t currentwindowidx = 0;
     bool changereq = false;
     size_t changeto = 0;
@@ -47,29 +51,52 @@ public:
         switch (currentwindowidx)
         {
         /* BEGIN USER WINDOW ACTIONS DEFINITIONS */
-        case 0:
+        case MAIN:
         {
+            currentwindowidx = MAIN;
+            // Current window only gets deleted and reinstantiated if inexistent or not MAIN
+            if (!currentwindowptr)
+            {
+                currentwindowptr = new MyScreen(tft, MAIN);
+                debugln("Creating MAIN window");
+            }
+            if (currentwindowptr && currentwindowptr->getWindowID() != MAIN)
+            {
+                delete currentwindowptr;
+                currentwindowptr = new MyScreen(tft, MAIN);
+                debugln("Recreating MAIN window");
+            }
             break;
         }
-        /* END USER WINDOW ACTIONS DEFINITIONS */
+        case CONFIG:
+        {
+            // Current window only gets deleted and reinstantiated if inexistent or not CONFIG
+            currentwindowidx = CONFIG;
+            if (!currentwindowptr)
+            {
+                currentwindowptr = new MyScreen2(tft, CONFIG);
+            }
+            if (currentwindowptr && currentwindowptr->getWindowID() != CONFIG)
+            {
+                delete currentwindowptr;
+                currentwindowptr = new MyScreen2(tft, CONFIG);
+            }
+            break;
+        }
+            /* END USER WINDOW ACTIONS DEFINITIONS */
         }
         if (touchpressed)
         {
             tft->getTouch(&touchx, &touchy);
             currentwindowptr->setTouchPos(touchx, touchy);
-            debugln("[fxwindowmanager.h] touch pressed");
-            debugln(touchx);
-            debugln(touchy);
             touchpressed = false;
         }
         currentwindowptr->drawUI();
         if (currentwindowptr->wasJumpRequested())
         {
-            debugln("[fxwindowmanager.h] window jump requested");
             currentwindowidx = currentwindowptr->getNewWindow();
             currentwindowptr->suppressJumpRequest();
         }
-        delete currentwindowptr;
     }
     void updateTouch()
     {

@@ -72,6 +72,8 @@ public:
         btn2.touchAt(touchx, touchy);
 
         /* MAIN USER CODE END */
+
+        w->resetTouch();
     }
 };
 
