@@ -16,7 +16,7 @@
 
 #include "icons/IconCog_63.h"
 
-namespace MyScreen2Callbacks
+namespace MyScreen2Namespace
 {
     FXWindow *w;
     /* USER CALLBACKS BEGIN */
@@ -44,7 +44,7 @@ public:
     MyScreen2(TFT_eSPI *t) : FXWindow(t)
     {
         w = (FXWindow *)this;
-        MyScreen2Callbacks::w = w;
+        MyScreen2Namespace::w = w;
     }
     void drawUI() override
     {
@@ -55,7 +55,7 @@ public:
         // FXButton btn1(w);
         //w->tft->fillScreen(TFT_YELLOW);
         FXButton btn2(w);
-        btn2.setPressedCallback(MyScreen2Callbacks::btn2callback);
+        btn2.setPressedCallback(MyScreen2Namespace::btn2callback);
         // btn1.setSize(70, 30);
         btn2.setButtonStyle(FXButton::FXButtonStyles::FILL_ELLIPSE);
         // btn2.setButtonBorder(4,TFT_CYAN);

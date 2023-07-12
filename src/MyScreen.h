@@ -16,10 +16,12 @@
 #include "FXGraph.h"
 #include "FXHProgressBar.h"
 #include "FXVProgressBar.h"
+#include "FXHSwitch.h"
 
-namespace MyScreenCallbacks
+namespace MyScreenNamespace
 {
     FXWindow *w;
+    bool switchstate = 0;
     /* USER CALLBACKS BEGIN */
     void btn2callback()
     {
@@ -45,7 +47,7 @@ public:
     MyScreen(TFT_eSPI *t) : FXWindow(t)
     {
         w = (FXWindow *)this;
-        MyScreenCallbacks::w = w;
+        MyScreenNamespace::w = w;
     }
     void drawUI() override
     {
@@ -62,6 +64,7 @@ public:
         FXGraph graph(w);
         FXHProgressBar pbar(w);
         FXVProgressBar pbar2(w);
+        FXHSwitch hsw(w,&MyScreenNamespace::switchstate);
 
         pbar.setPosition(10,450);
         pbar.setSize(80,20);
@@ -81,7 +84,7 @@ public:
         graph.setGraphLineColor(TFT_BLACK);
         graph.setGraphDetailColor(TFT_LIGHTGREY);
 
-        btn2.setPressedCallback(MyScreenCallbacks::btn2callback);
+        btn2.setPressedCallback(MyScreenNamespace::btn2callback);
         btn2.setButtonStyle(FXButton::FXButtonStyles::FILL_RECT_V_GRADIENT);
         btn2.setButtonGradientColors(TFT_BLUE, TFT_YELLOW);
         btn2.setButtonBorder(4, TFT_CYAN);
@@ -92,11 +95,17 @@ public:
         btn2.setButtonForegroundColor(TFT_WHITE);
         btn2.setButtonText("Button", 2, 1);
 
+        hsw.setPosition(30,30);
+        hsw.setSize(100,50);
+        hsw.setCornerRadius(25);
+
+        hsw.draw();
         graph.draw();
         btn2.draw();
         pbar.draw();
         pbar2.draw();
         btn2.touchAt(touchx, touchy);
+        hsw.touchAt(touchx, touchy);
 
         /* MAIN USER CODE END */
     }

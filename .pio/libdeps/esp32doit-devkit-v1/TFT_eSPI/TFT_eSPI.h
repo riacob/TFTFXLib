@@ -325,6 +325,7 @@ const PROGMEM fontinfo fontdata [] = {
 #define TFT_SILVER      0xC618      /* 192, 192, 192 */
 #define TFT_SKYBLUE     0x867D      /* 135, 206, 235 */
 #define TFT_VIOLET      0x915C      /* 180,  46, 226 */
+#define TFT_DARKRED     0x5020      /* 10,    1,   0 */
 
 // Next is a special 16 bit colour value that encodes to 8 bits
 // and will then decode back to the same 16 bit value.

@@ -224,5 +224,5 @@
  src/MyScreen.h library/FXWindow.h library/Includes.h library/Debug.h \
  library/FXButton.h library/FXWidget.h library/FXWindow.h \
  library/FXGraph.h library/FXHProgressBar.h library/FXVProgressBar.h \
- library/FXWindowManager.h src/MyScreen.h src/MyScreen2.h \
- library/icons/IconCog_63.h
+ library/FXHSwitch.h library/FXWindowManager.h src/MyScreen.h \
+ src/MyScreen2.h library/icons/IconCog_63.h

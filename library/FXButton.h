@@ -39,7 +39,10 @@ public:
         ICON,
         TEXT
     };
-
+private:
+    // Callback pointer on button press
+    void (*pressedcallback)();
+    bool pressedcallbackset = false;
 protected:
     // Size X of the button inside the sprite
     uint16_t btnsizex = 0;
@@ -49,8 +52,6 @@ protected:
     uint16_t btnstartx = 0;
     // Start Y of the button
     uint16_t btnstarty = 0;
-    // Callback pointer on button press
-    void (*pressedcallback)();
 
     // Shape of the button
     FXButtonStyles btnstyle = FXButtonStyles::FILL_ROUND_RECT;
@@ -224,6 +225,7 @@ public:
     void setPressedCallback(void (*f)())
     {
         pressedcallback = f;
+        pressedcallbackset = true;
     }
 
     /**
@@ -238,7 +240,7 @@ public:
         // Button press
         if (x > widgetstartx && x < widgetstartx + btnsizex && y > widgetstarty && y < widgetstarty + btnsizey)
         {
-            pressedcallback();
+            if (pressedcallbackset) {pressedcallback();}
         }
     }
 
