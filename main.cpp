@@ -1,7 +1,18 @@
+/**
+ * @file main.cpp
+ * @author Riccardo Iacob
+ * @brief 
+ * @version 0.1
+ * @date 2023-07-12
+ * 
+ * @copyright Copyright (c) 2023
+ * 
+ */
 #include <Arduino.h>
 #include <SPI.h>
 #include <FS.h>
 #include <SPIFFS.h>
+#include <TFT_eSPI.h>
 #include "MyScreen.h"
 #include "FXWindowManager.h"
 

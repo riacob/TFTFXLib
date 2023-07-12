@@ -24,11 +24,10 @@ public:
      */
     enum class FXButtonStyles
     {
-        //FILL_RECT,
         FILL_ROUND_RECT,
         FILL_ELLIPSE,
         FILL_RECT_H_GRADIENT,
-        // FILL_RECT_V_GRADIENT
+        FILL_RECT_V_GRADIENT
     };
 
     /**
@@ -128,18 +127,6 @@ public:
         // add button to the widget
         switch (btnstyle)
         {
-        /*case FXButtonStyles::FILL_RECT:
-        {
-            widget->fillRect(btnstartx, btnstarty, btnsizex, btnsizey, btnbgcolor);
-            if (btnborder)
-            {
-                for (uint16_t i = 0; i < btnborderthickness; i++)
-                {
-                    widget->drawRect(btnstartx + i, btnstarty + i, btnsizex - 2 * i, btnsizey - 2 * i, btnbordercolor);
-                }
-            }
-            break;
-        }*/
         case FXButtonStyles::FILL_ROUND_RECT:
         {
             widget->fillRoundRect(btnstartx, btnstarty, btnsizex, btnsizey, btncornerradius, btnbgcolor);
@@ -169,6 +156,18 @@ public:
         case FXButtonStyles::FILL_RECT_H_GRADIENT:
         {
             widget->fillRectHGradient(btnstartx, btnstarty, btnsizex, btnsizey, btncolor1, btncolor2);
+            if (btnborder)
+            {
+                for (uint16_t i = 0; i < btnborderthickness; i++)
+                {
+                    widget->drawRect(btnstartx + i, btnstarty + i, btnsizex - 2 * i, btnsizey - 2 * i, btnbordercolor);
+                }
+            }
+            break;
+        }
+        case FXButtonStyles::FILL_RECT_V_GRADIENT:
+        {
+            widget->fillRectVGradient(btnstartx, btnstarty, btnsizex, btnsizey, btncolor1, btncolor2);
             if (btnborder)
             {
                 for (uint16_t i = 0; i < btnborderthickness; i++)

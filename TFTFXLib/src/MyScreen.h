@@ -55,7 +55,8 @@ public:
         FXButton btn2(w);
         btn2.setPressedCallback(MyScreenCallbacks::btn2callback);
         // btn1.setSize(70, 30);
-        btn2.setButtonStyle(FXButton::FXButtonStyles::FILL_ROUND_RECT);
+        btn2.setButtonStyle(FXButton::FXButtonStyles::FILL_RECT_V_GRADIENT);
+        btn2.setButtonGradientColors(TFT_BLUE,TFT_YELLOW);
         btn2.setButtonBorder(4, TFT_CYAN);
         btn2.setSize(250, 90);
         btn2.setCornerRadius(45);

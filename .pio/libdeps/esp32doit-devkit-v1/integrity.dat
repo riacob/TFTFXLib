@@ -1,0 +1,5 @@
+FS
+SPI
+SPIFFS
+LITTLEFS
+bodmer/TFT_eSPI@^2.5.31
