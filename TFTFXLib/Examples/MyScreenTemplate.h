@@ -1,3 +1,13 @@
+/**
+ * @file MyScreenTemplate.h
+ * @author Riccardo Iacob
+ * @brief 
+ * @version 0.1
+ * @date 2023-07-12
+ * 
+ * @copyright Copyright (c) 2023
+ * 
+ */
 #ifndef MYSCREEN_H
 #define MYSCREEN_H
 

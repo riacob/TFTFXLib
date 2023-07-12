@@ -69,15 +69,11 @@ public:
         {
             tft->getTouch(&touchx, &touchy);
             currentwindowptr->setTouchPos(touchx, touchy);
-            debugln("[fxwindowmanager.h] touch pressed");
-            debugln(touchx);
-            debugln(touchy);
             touchpressed = false;
         }
         currentwindowptr->drawUI();
         if (currentwindowptr->wasJumpRequested())
         {
-            debugln("[fxwindowmanager.h] window jump requested");
             currentwindowidx = currentwindowptr->getNewWindow();
             currentwindowptr->suppressJumpRequest();
         }

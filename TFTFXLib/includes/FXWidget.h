@@ -49,10 +49,6 @@ protected:
     }
     void createWidget()
     {
-        /*debug("[fxwidget.h] createWidget() sizex");
-        debug(widgetsizex);
-        debug(" sizey");
-        debugln(widgetsizey);*/
         widget = new TFT_eSprite(_tft);
         widget->createSprite(widgetsizex, widgetsizey);
         isValid = true;
@@ -61,28 +57,20 @@ protected:
     {
         if (!isValid)
         {
-            // debugln("[fxwidget.h] drawWidget() widget invalid");
             return;
         }
         if (!isVisible)
         {
-            // debugln("[fxwidget.h] drawWidget() widget invisible");
             return;
         }
-        /*debug("[fxwidget.h] drawWidget() startx");
-        debug(widgetstartx);
-        debug(" starty");
-        debugln(widgetstarty);*/
         widget->pushSprite(widgetstartx, widgetstarty);
     }
     void deleteWidget()
     {
         if (!isValid)
         {
-            // debugln("[fxwidget.h] deleteWidget() widget invalid");
             return;
         }
-        // debugln("[fxwidget.h] deleteWidget()");
         widget->deleteSprite();
         isValid = false;
     }

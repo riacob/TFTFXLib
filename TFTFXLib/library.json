@@ -1,0 +1,28 @@
+{
+  "name": "TFTFXLib",
+  "keywords": "TFT, LCD, SPI, TFT_eSPI, TFT_eSprite",
+  "description": "A UI/UX library for Bodmer's TFT_eSPI. This library is still in early development, USE AT YOUR OWN RISK.",
+  "version": "0.0.0",
+  "repository":
+  {
+    "type": "git",
+    "url": "https://github.com/riacob/TFTFXLib"
+  },
+  "authors": [
+    {
+      "name": "Riccardo Iacob",
+      "url": "https://github.com/riacob",
+      "mantainer": true
+    }
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/riacob/TFTFXLib",
+  "frameworks": "arduino",
+  "platforms":
+  [
+    "atmelavr"
+  ],
+  "dependencies" :{
+    "Bodmer/TFT_eSPI": "~2.5.31"
+  }
+}

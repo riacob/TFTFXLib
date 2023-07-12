@@ -228,7 +228,6 @@ public:
         // Button press
         if (x > btnstartx && x < btnstartx + btnsizex && y > btnstarty && y < btnstarty + btnsizey)
         {
-            debugln("[fxbutton.h] touched");
             pressedcallback();
         }
     }

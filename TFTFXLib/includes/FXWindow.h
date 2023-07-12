@@ -52,7 +52,6 @@ public:
     }
     void jumpToWindow(size_t idx)
     {
-        debugln("[fxwindow.h] window jump");
         windowChangeRequested = true;
         targetWindow = idx;
     }
