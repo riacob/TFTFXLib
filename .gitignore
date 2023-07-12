@@ -1,3 +1,1 @@
-.vscode
-.pio
-!pio/libdeps/TFT_eSPI/User_Setup.h
+.vscode/*
