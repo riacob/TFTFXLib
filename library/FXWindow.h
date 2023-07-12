@@ -18,6 +18,7 @@ class FXWindow
 private:
     bool windowChangeRequested = false;
     size_t targetWindow = 0;
+    size_t wid = 0;
 
 protected:
     // Last X touch point
@@ -31,8 +32,9 @@ public:
     TFT_eSPI *tft;
 
 public:
-    FXWindow(TFT_eSPI *t)
+    FXWindow(TFT_eSPI *t, size_t windowID)
     {
+        wid = windowID;
         tft = t;
     }
     virtual void drawUI() {}
@@ -58,6 +60,10 @@ public:
     void suppressJumpRequest()
     {
         windowChangeRequested = false;
+    }
+    size_t getWindowID()
+    {
+        return wid;
     }
 };
 

@@ -44,7 +44,7 @@ private:
     /* PRIVATE USER METHODS AND PARAMETERS BEGIN */
     /* PRIVATE USER METHODS AND PARAMETERS END*/
 public:
-    MyScreen(TFT_eSPI *t) : FXWindow(t)
+    MyScreen(TFT_eSPI *t, size_t windowID) : FXWindow(t, windowID)
     {
         w = (FXWindow *)this;
         MyScreenNamespace::w = w;

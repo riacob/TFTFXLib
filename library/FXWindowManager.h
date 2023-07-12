@@ -36,7 +36,7 @@ private:
     uint16_t touchx;
     uint16_t touchy;
     bool touchpressed = false;
-    FXWindow *currentwindowptr;
+    FXWindow *currentwindowptr = NULL;
     size_t currentwindowidx = 0;
     bool changereq = false;
     size_t changeto = 0;
@@ -54,13 +54,29 @@ public:
         case MAIN:
         {
             currentwindowidx = MAIN;
-            currentwindowptr = new MyScreen(tft);
+            if (!currentwindowidx)
+            {
+                currentwindowptr = new MyScreen(tft, MAIN);
+            }
+            if (currentwindowptr && currentwindowptr->getWindowID() != MAIN)
+            {
+                delete currentwindowptr;
+                currentwindowptr = new MyScreen(tft, MAIN);
+            }
             break;
         }
         case CONFIG:
         {
             currentwindowidx = CONFIG;
-            currentwindowptr = new MyScreen2(tft);
+            if (!currentwindowidx)
+            {
+                currentwindowptr = new MyScreen2(tft, CONFIG);
+            }
+            if (currentwindowptr && currentwindowptr->getWindowID() != CONFIG)
+            {
+                delete currentwindowptr;
+                currentwindowptr = new MyScreen2(tft, CONFIG);
+            }
             break;
         }
             /* END USER WINDOW ACTIONS DEFINITIONS */
@@ -77,7 +93,6 @@ public:
             currentwindowidx = currentwindowptr->getNewWindow();
             currentwindowptr->suppressJumpRequest();
         }
-        delete currentwindowptr;
     }
     void updateTouch()
     {
