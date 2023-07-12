@@ -122,6 +122,14 @@ public:
     {
         widgetbgcolor = color;
     }
+    void clearWidget()
+    {
+        deleteWidget();
+        createWidget();
+        widget->fillRect(widgetstartx,widgetstarty,widgetsizex,widgetsizey,widgetbgcolor);
+        setWidgetVisible();
+        drawWidget();
+    }
 };
 
 #endif

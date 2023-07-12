@@ -15,6 +15,10 @@
 
 class FXWindow
 {
+private:
+    bool windowChangeRequested = false;
+    size_t targetWindow = 0;
+
 protected:
     // Last X touch point
     uint16_t touchx = 0;
@@ -37,6 +41,24 @@ public:
         touchx = x;
         touchy = y;
         touchtime = millis();
+    }
+    bool wasJumpRequested()
+    {
+        return windowChangeRequested;
+    }
+    size_t getNewWindow()
+    {
+        return targetWindow;
+    }
+    void jumpToWindow(size_t idx)
+    {
+        debugln("[fxwindow.h] window jump");
+        windowChangeRequested = true;
+        targetWindow = idx;
+    }
+    void suppressJumpRequest()
+    {
+        windowChangeRequested = false;
     }
 };
 

@@ -15,8 +15,6 @@
 #include "FXWindow.h"
 
 /* BEGIN USER SCREEN INCLUSION */
-#include "MyScreen.h"
-#include "MyScreen2.h"
 /* END USER SCREEN INCLUSION */
 
 class FXWindowManager
@@ -25,8 +23,6 @@ public:
     enum Windows
     {
         /* BEGIN USER WINDOW NAME DEFINITIONS */
-        MAIN,
-        CONFIG,
         /* END USER WINDOW NAME DEFINITIONS */
         TOT_WINDOWS
     };
@@ -51,19 +47,11 @@ public:
         switch (currentwindowidx)
         {
         /* BEGIN USER WINDOW ACTIONS DEFINITIONS */
-        case MAIN:
+        case 0:
         {
-            currentwindowidx = MAIN;
-            currentwindowptr = new MyScreen(tft);
             break;
         }
-        case CONFIG:
-        {
-            currentwindowidx = CONFIG;
-            currentwindowptr = new MyScreen2(tft);
-            break;
-        }
-            /* END USER WINDOW ACTIONS DEFINITIONS */
+        /* END USER WINDOW ACTIONS DEFINITIONS */
         }
         if (touchpressed)
         {

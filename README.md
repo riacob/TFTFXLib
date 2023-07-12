@@ -3,4 +3,4 @@ NO  CONFIGURATION WIZARD IS YET AVAILABLE
 <br>
 User creates and edits screens copying MyScreen.h
 <br>
-User edits FXWindowManager.h for custom window names (optional)
+User edits FXWindowManager.h 
