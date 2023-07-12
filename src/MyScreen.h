@@ -66,7 +66,7 @@ public:
         pbar.setPosition(10,450);
         pbar.setSize(80,20);
         pbar.setMultiplier(random(0,999)/1000.0);
-        pbar.set
+        pbar.setCornerRadius(8);
 
         pbar2.setPosition(0,0);
         pbar2.setSize(20,80);
