@@ -15,19 +15,19 @@
 #include "FXScreen.h"
 #include "FXScreens.h"
 
-#define _HANDLEWINDOWINSTANCE(x, y)                                    \
-    if (currentwindowidx == y)                                         \
-    {                                                                  \
-        if (!currentwindowptr)                                         \
-        {                                                              \
-            currentwindowptr = new x(tft, y);                          \
-            currentwindowptr->tft->fillScreen(TFT_WHITE);              \
-        }                                                              \
-        if (currentwindowptr && currentwindowptr->getWindowID() != y)  \
-        {                                                              \
-            delete currentwindowptr, currentwindowptr = new x(tft, y); \
-            currentwindowptr->tft->fillScreen(TFT_WHITE);              \
-        }                                                              \
+#define _HANDLEWINDOWINSTANCE(x, y)                                                    \
+    if (currentwindowidx == y)                                                         \
+    {                                                                                  \
+        if (!currentwindowptr)                                                         \
+        {                                                                              \
+            currentwindowptr = new x(tft, y);                                          \
+            currentwindowptr->tft->fillScreen(currentwindowptr->getBackgroundColor()); \
+        }                                                                              \
+        if (currentwindowptr && currentwindowptr->getWindowID() != y)                  \
+        {                                                                              \
+            delete currentwindowptr, currentwindowptr = new x(tft, y);                 \
+            currentwindowptr->tft->fillScreen(currentwindowptr->getBackgroundColor()); \
+        }                                                                              \
     }
 
 /* BEGIN USER SCREEN INCLUSION */

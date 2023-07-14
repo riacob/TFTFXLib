@@ -16,18 +16,17 @@
 
 class FXScreen
 {
-private:
+protected:
     bool windowChangeRequested = false;
     FXScreens targetWindow;
     FXScreens wid;
-
-protected:
     // Last X touch point
     uint16_t touchx = 0;
     // Last Y touch point
     uint16_t touchy = 0;
     // millis() when the touch points where updated
     long touchtime = 0;
+    uint32_t bgcolor = TFT_WHITE;
 
 public:
     TFT_eSPI *tft;
@@ -69,6 +68,12 @@ public:
     void resetTouch(){
         touchx = 0;
         touchy = 0;
+    }
+    uint32_t getBackgroundColor() {
+        return bgcolor;
+    }
+    void setBackgroundColor(uint32_t color) {
+        bgcolor = color;
     }
 };
 
