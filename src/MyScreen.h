@@ -11,7 +11,6 @@
 #ifndef MYSCREEN_H
 #define MYSCREEN_H
 
-
 #include "FXWindow.h"
 #include "FXButton.h"
 #include "FXGraph.h"
@@ -25,9 +24,9 @@ namespace MyScreenNamespace
     /* USER CALLBACKS BEGIN */
     void btn2callback()
     {
-        //debugln("[myscreen.h] btn2 callback");
+        // debugln("[myscreen.h] btn2 callback");
         w->tft->fillScreen(TFT_WHITE);
-        w->jumpToWindow(1);
+        w->jumpToWindow(FXScreens::CONFIG);
     }
     /* USER CALLBACKS END */
 };
@@ -44,10 +43,13 @@ private:
     /* PRIVATE USER METHODS AND PARAMETERS BEGIN */
     /* PRIVATE USER METHODS AND PARAMETERS END*/
 public:
-    MyScreen(TFT_eSPI *t, size_t windowID) : FXWindow(t, windowID)
+    MyScreen(TFT_eSPI *t, FXScreens windowID) : FXWindow(t, windowID)
     {
         w = (FXWindow *)this;
         MyScreenNamespace::w = w;
+    }
+    ~MyScreen() {
+        /* user delete window heap-instantiated objects such as BMP images*/
     }
     void drawUI() override
     {
@@ -56,8 +58,9 @@ public:
         // Create fake graph data
         float yvals[200];
         int i, j;
-        for (i = 0; i < 200; i++) {
-            yvals[i] = random(-50,50);
+        for (i = 0; i < 200; i++)
+        {
+            yvals[i] = random(-50, 50);
         }
 
         FXButton btn2(w);
@@ -66,18 +69,18 @@ public:
         FXVProgressBar pbar2(w);
         FXHSwitch hsw(w);
 
-        pbar.setPosition(10,450);
-        pbar.setSize(80,20);
-        pbar.setMultiplier(random(0,999)/1000.0);
+        pbar.setPosition(10, 450);
+        pbar.setSize(80, 20);
+        pbar.setMultiplier(random(0, 999) / 1000.0);
         pbar.setCornerRadius(8);
 
-        pbar2.setPosition(0,0);
-        pbar2.setSize(20,80);
-        pbar2.setMultiplier(random(0,999)/1000.0);
+        pbar2.setPosition(0, 0);
+        pbar2.setSize(20, 80);
+        pbar2.setMultiplier(random(0, 999) / 1000.0);
         pbar2.invert();
 
         graph.setPosition(63, 250);
-        graph.setSize(200,120);
+        graph.setSize(200, 120);
         graph.setData(yvals, 200);
         graph.setGraphBackgroundColor(TFT_WHITE);
         graph.setGraphBorderColor(TFT_BLACK);
@@ -92,11 +95,11 @@ public:
         btn2.setCornerRadius(45);
         btn2.setPosition(20, 120);
         btn2.setButtonBackgroundColor(TFT_PURPLE);
-        btn2.setButtonForegroundColor(TFT_WHITE);
+        btn2.setButtonForegroundColor(TFT_BLACK);
         btn2.setButtonText("Button", 2, 1);
 
-        hsw.setPosition(30,30);
-        hsw.setSize(100,50);
+        hsw.setPosition(30, 30);
+        hsw.setSize(100, 50);
         hsw.setCornerRadius(25);
 
         hsw.draw();
@@ -107,7 +110,7 @@ public:
 
         btn2.touchAt(touchx, touchy);
         hsw.touchAt(touchx, touchy);
-        
+
         /* MAIN USER CODE END */
 
         w->resetTouch();

@@ -223,7 +223,8 @@
  .pio/libdeps/esp32doit-devkit-v1/TFT_eSPI/Extensions/Button.h \
  .pio/libdeps/esp32doit-devkit-v1/TFT_eSPI/Extensions/Sprite.h \
  library/Debug.h library/FXWindowManager.h library/Includes.h \
- library/FXWindow.h src/MyScreen.h library/FXWindow.h library/FXButton.h \
- library/FXWidget.h library/FXGraph.h library/FXHProgressBar.h \
- library/FXVProgressBar.h library/FXHSwitch.h src/MyScreen2.h \
- library/icons/IconCog_63.h src/PwdScreen.h
+ library/FXWindow.h library/FXScreens.h src/MyScreen.h library/FXWindow.h \
+ library/FXButton.h library/FXWidget.h library/FXGraph.h \
+ library/FXHProgressBar.h library/FXVProgressBar.h library/FXHSwitch.h \
+ src/MyScreen2.h library/FXScreens.h library/icons/IconCog_63.h \
+ src/PwdScreen.h src/ExampleScreen.h

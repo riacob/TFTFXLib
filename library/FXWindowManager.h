@@ -13,6 +13,7 @@
 
 #include "Includes.h"
 #include "FXWindow.h"
+#include "FXScreens.h"
 
 #define _HANDLEWINDOWINSTANCE(x, y)                                    \
     if (currentwindowidx == y)                                         \
@@ -33,6 +34,7 @@
 #include "MyScreen.h"
 #include "MyScreen2.h"
 #include "PwdScreen.h"
+#include "ExampleScreen.h"
 /* END USER SCREEN INCLUSION */
 
 class FXWindowManager
@@ -54,7 +56,7 @@ private:
     uint16_t touchy;
     bool touchpressed = false;
     FXWindow *currentwindowptr = NULL;
-    size_t currentwindowidx = 0;
+    FXScreens currentwindowidx = FXScreens::MAIN;
     bool changereq = false;
     size_t changeto = 0;
 
@@ -66,9 +68,9 @@ public:
     void doTick()
     {
         /* BEGIN USER WINDOW ACTIONS DEFINITIONS */
-        _HANDLEWINDOWINSTANCE(MyScreen, MAIN);
-        _HANDLEWINDOWINSTANCE(MyScreen2, CONFIG);
-        _HANDLEWINDOWINSTANCE(PwdScreen, PWD);
+        _HANDLEWINDOWINSTANCE(MyScreen, FXScreens::MAIN);
+        _HANDLEWINDOWINSTANCE(MyScreen2, FXScreens::CONFIG);
+        _HANDLEWINDOWINSTANCE(PwdScreen, FXScreens::PWD);
         /* END USER WINDOW ACTIONS DEFINITIONS */
         if (touchpressed)
         {
@@ -79,10 +81,6 @@ public:
         currentwindowptr->drawUI();
         if (currentwindowptr->wasJumpRequested())
         {
-            debug("Jumping from ");
-            debug(currentwindowptr->getWindowID());
-            debug(" to ");
-            debugln(currentwindowptr->getNewWindow());
             currentwindowidx = currentwindowptr->getNewWindow();
             currentwindowptr->suppressJumpRequest();
         }
@@ -91,12 +89,8 @@ public:
     {
         touchpressed = true;
     }
-    void setWindow(size_t windowIdx)
+    void setWindow(FXScreens windowIdx)
     {
-        if (windowIdx >= TOT_WINDOWS)
-        {
-            return;
-        }
         currentwindowidx = windowIdx;
     }
     uint16_t getTouchX()

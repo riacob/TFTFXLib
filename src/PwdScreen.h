@@ -37,10 +37,13 @@ private:
     /* PRIVATE USER METHODS AND PARAMETERS BEGIN */
     /* PRIVATE USER METHODS AND PARAMETERS END*/
 public:
-    PwdScreen(TFT_eSPI *t, size_t windowID) : FXWindow(t, windowID)
+    PwdScreen(TFT_eSPI *t, FXScreens windowID) : FXWindow(t, windowID)
     {
         w = (FXWindow *)this;
         PwdScreenNamespace::w = w;
+    }
+    ~PwdScreen() {
+        /* user delete window heap-instantiated objects such as BMP images*/
     }
     void drawUI() override
     {
@@ -85,7 +88,7 @@ public:
         btnA.setButtonBackgroundColor(TFT_BLUE);
         btnA.setButtonText("A", 2, 2);
 
-        //row2
+        // row2
         btn4.setPosition(0, 150);
         btn4.setSize(50, 50);
         btn4.setButtonBackgroundColor(TFT_BLUE);

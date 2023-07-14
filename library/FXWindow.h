@@ -12,13 +12,14 @@
 #define FXWINDOW_H
 
 #include "Includes.h"
+#include "FXScreens.h"
 
 class FXWindow
 {
 private:
     bool windowChangeRequested = false;
-    size_t targetWindow = 0;
-    size_t wid = 0;
+    FXScreens targetWindow;
+    FXScreens wid;
 
 protected:
     // Last X touch point
@@ -32,7 +33,7 @@ public:
     TFT_eSPI *tft;
 
 public:
-    FXWindow(TFT_eSPI *t, size_t windowID)
+    FXWindow(TFT_eSPI *t, FXScreens windowID)
     {
         wid = windowID;
         tft = t;
@@ -48,11 +49,11 @@ public:
     {
         return windowChangeRequested;
     }
-    size_t getNewWindow()
+    FXScreens getNewWindow()
     {
         return targetWindow;
     }
-    void jumpToWindow(size_t idx)
+    void jumpToWindow(FXScreens idx)
     {
         windowChangeRequested = true;
         targetWindow = idx;
@@ -61,7 +62,7 @@ public:
     {
         windowChangeRequested = false;
     }
-    size_t getWindowID()
+    FXScreens getWindowID()
     {
         return wid;
     }
