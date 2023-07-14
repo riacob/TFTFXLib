@@ -34,7 +34,6 @@
 #include "MyScreen.h"
 #include "MyScreen2.h"
 #include "PwdScreen.h"
-#include "ExampleScreen.h"
 /* END USER SCREEN INCLUSION */
 
 class FXScreenManager

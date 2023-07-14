@@ -1,7 +1,7 @@
 /**
  * @file debug.h
  * @author Riccardo Iacob
- * @brief Cleanly handles debugging
+ * @brief Handles debugging
  * @version 0.1
  * @date 2023-07-09
  * 

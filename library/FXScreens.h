@@ -17,7 +17,7 @@ enum class FXScreens {
     CONFIG,
     PWD,
     /* END SECTION WINDOWS */
-    //TOT_SCREENS
+    TOT_SCREENS
 };
 
 #endif
