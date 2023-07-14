@@ -64,10 +64,11 @@ public:
         }
 
         FXButton btn2(w);
-        FXGraph graph(w);
+        //FXGraph graph(w);
         FXHProgressBar pbar(w);
         FXVProgressBar pbar2(w);
-        FXHSwitch hsw(w);
+        //FXHSwitch hsw(w);
+        //FXPaint paint(w);
 
         pbar.setPosition(10, 450);
         pbar.setSize(80, 20);
@@ -80,13 +81,17 @@ public:
         pbar2.setMultiplier(random(0, 999) / 1000.0);
         //pbar2.invert();
 
-        graph.setPosition(63, 250);
+        /*graph.setPosition(63, 250);
         graph.setSize(200, 120);
         graph.setData(yvals, 200);
         graph.setGraphBackgroundColor(TFT_WHITE);
         graph.setGraphBorderColor(TFT_BLACK);
         graph.setGraphLineColor(TFT_BLACK);
-        graph.setGraphDetailColor(TFT_LIGHTGREY);
+        graph.setGraphDetailColor(TFT_LIGHTGREY);*/
+
+        //paint.setPosition(20,250);
+        //paint.setSize(200,100);
+
 
         btn2.setPressedCallback(MyScreenNamespace::btn2callback);
         btn2.setButtonStyle(FXButton::FXButtonStyles::FILL_RECT_V_GRADIENT);
@@ -99,18 +104,20 @@ public:
         btn2.setButtonForegroundColor(TFT_BLACK);
         btn2.setButtonText("Button", 2, 1);
 
-        hsw.setPosition(30, 30);
-        hsw.setSize(100, 50);
-        hsw.setCornerRadius(25);
+        //hsw.setPosition(30, 30);
+        //hsw.setSize(100, 50);
+        //hsw.setCornerRadius(25);
 
-        hsw.draw();
-        graph.draw();
+        //hsw.draw();
+        //graph.draw();
         btn2.draw();
         pbar.draw();
         pbar2.draw();
+        //paint.draw();
 
         btn2.touchAt(touchx, touchy);
-        hsw.touchAt(touchx, touchy);
+        //hsw.touchAt(touchx, touchy);
+        //paint.touchAt(touchx, touchy);
 
         /* MAIN USER CODE END */
 

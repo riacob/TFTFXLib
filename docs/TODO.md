@@ -10,6 +10,7 @@
 
 ## Minor patches and fixes
 - Inverted progressbar with rounded corners looks weird (because fg/bg are inverted and not the drawing process)
+- Bootloop crash if widget is instantiated and not drawn (not a major problem because unused objects shall not be created in the first place)
 
 ## Short term
 - SDCard/SPIFFS icon parser, modifying [Bodmer's](https://github.com/Bodmer/TFT_eSPI/blob/master/examples/Generic/TFT_SPIFFS_BMP/BMP_functions.ino)

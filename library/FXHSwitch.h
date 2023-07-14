@@ -32,7 +32,7 @@ protected:
     uint32_t offcolor = TFT_GREEN;
     uint32_t offaccentcolor = TFT_DARKGREEN;
     uint32_t bordercolor = TFT_BLACK;
-    bool _state;
+    bool _state = false;
 
 public:
     FXHSwitch(FXScreen *parent) : FXWidget(parent)

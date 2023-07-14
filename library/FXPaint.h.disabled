@@ -1,0 +1,102 @@
+/**
+ * @file FXPaint.h
+ * @author Riccardo Iacob
+ * @brief FXPaint Widget Class
+ * @version 0.1
+ * @date 2023-07-14
+ *
+ * @copyright Copyright (c) 2023
+ *
+ */
+#ifndef FXPAINT_H
+#define FXPAINT_H
+
+#include "FXWidget.h"
+
+class FXPaint : public FXWidget
+{
+public:
+    enum class FXPaintTools
+    {
+        BRUSH
+    };
+
+protected:
+    uint32_t bgcolor = TFT_BLACK;
+    uint32_t toolcolor = TFT_CYAN;
+    FXPaintTools currenttool = FXPaintTools::BRUSH;
+    uint16_t cornerradius = 0;
+    uint32_t bordercolor = TFT_BLACK;
+    uint16_t toolsize = 1;
+
+public:
+    FXPaint(FXScreen *parent) : FXWidget(parent)
+    {
+    }
+    void draw()
+    {
+        createWidget();
+        widget->fillRoundRect(0, 0, widgetsizex, widgetsizey, cornerradius, bgcolor);
+        widget->drawRoundRect(0, 0, widgetsizex, widgetsizey, cornerradius, bordercolor);
+        drawWidget();
+        deleteWidget();
+    }
+
+    /**
+     * @brief Sets the size of the switch
+     *
+     * @param sizeX: X size
+     * @param sizeY: Y size
+     */
+    void setSize(uint16_t sizeX, uint16_t sizeY)
+    {
+        widgetsizex = sizeX;
+        widgetsizey = sizeY;
+    }
+
+    /**
+     * @brief Sets the position of the switch
+     *
+     * @param x: X position
+     * @param y: Y position
+     */
+    void setPosition(uint16_t x, uint16_t y)
+    {
+        widgetstartx = x;
+        widgetstarty = y;
+    }
+
+    /**
+     * @brief Sets the corner radius of the progressbar
+     *
+     * @param radius: Corner radius
+     */
+    void setCornerRadius(uint16_t radius)
+    {
+        cornerradius = radius;
+    }
+
+    /**
+     * @brief Maps x and y coordinates to callbacks, if found executes them, else does nothing
+     *
+     * @param x: X touch coordinate
+     * @param y: Y touch coordinate
+     */
+    void touchAt(uint16_t x, uint16_t y)
+    {
+        // Check if the touch is in any position where a callback should be called
+        // Button press
+        if (x > widgetstartx && x < widgetstartx + widgetsizex && y > widgetstarty && y < widgetstarty + widgetsizey)
+        {
+            switch (currenttool)
+            {
+            case FXPaintTools::BRUSH:
+            {
+                widget->drawCircle(x, y, toolsize, toolcolor);
+            }
+            }
+        }
+    }
+};
+
+#endif
