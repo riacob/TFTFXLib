@@ -1,20 +1,20 @@
 /**
- * @file FXWindow.h
+ * @file FXScreen.h
  * @author Riccardo Iacob
- * @brief FXWindow Parent Class
+ * @brief FXScreen Parent Class
  * @version 0.1
  * @date 2023-07-11
  *
  * @copyright Copyright (c) 2023
  *
  */
-#ifndef FXWINDOW_H
-#define FXWINDOW_H
+#ifndef FXSCREEN_H
+#define FXSCREEN_H
 
 #include "Includes.h"
 #include "FXScreens.h"
 
-class FXWindow
+class FXScreen
 {
 private:
     bool windowChangeRequested = false;
@@ -33,7 +33,7 @@ public:
     TFT_eSPI *tft;
 
 public:
-    FXWindow(TFT_eSPI *t, FXScreens windowID)
+    FXScreen(TFT_eSPI *t, FXScreens windowID)
     {
         wid = windowID;
         tft = t;

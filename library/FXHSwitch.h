@@ -35,7 +35,7 @@ protected:
     bool _state;
 
 public:
-    FXHSwitch(FXWindow *parent) : FXWidget(parent)
+    FXHSwitch(FXScreen *parent) : FXWidget(parent)
     {
     }
     void draw()

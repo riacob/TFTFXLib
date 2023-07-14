@@ -11,7 +11,7 @@
 #ifndef EXAMPLESCREEN_H
 #define EXAMPLESCREEN_H
 
-#include "FXWindow.h"
+#include "FXScreen.h"
 #include "FXScreens.h"
 
 /* BEGIN SECTION INCLUDE_WIDGETS */
@@ -24,14 +24,14 @@
 
 namespace ExampleScreenNamespace
 {
-    FXWindow *w;
+    FXScreen *w;
     /* BEGIN SECTION NAMESPACE_DEFINITIONS */
     /* END SECTION NAMESPACE_DEFINITIONS */
     /* BEGIN SECTION NAMESPACE_CALLBACKS */
     /* END SECTION NAMESPACE_CALLBACKS */
 };
 
-class ExampleScreen : public FXWindow
+class ExampleScreen : public FXScreen
 {
 protected:
     /* BEGIN SECTION PROTECTED_DEFINITIONS */
@@ -40,13 +40,13 @@ public:
     /* BEGIN SECTION PUBLIC_DEFINITIONS */
     /* END SECTION PUBLIC_DEFINITIONS */
 private:
-    FXWindow *w;
+    FXScreen *w;
     /* BEGIN SECTION PRIVATE_DEFINITIONS */
     /* END SECTION PRIVATE_DEFINITIONS */
 public:
-    ExampleScreen(TFT_eSPI *t, FXScreens windowID) : FXWindow(t, windowID)
+    ExampleScreen(TFT_eSPI *t, FXScreens windowID) : FXScreen(t, windowID)
     {
-        w = (FXWindow *)this;
+        w = (FXScreen *)this;
         ExampleScreenNamespace::w = w;
         /* BEGIN SECTION CONSTRUCTOR */
         /* END SECTION CONSTRUCTOR */

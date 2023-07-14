@@ -1,18 +1,18 @@
 /**
- * @file FXWindowManager.h
+ * @file FXScreenManager.h
  * @author Riccardo Iacob
- * @brief FXWindowManager Class
+ * @brief FXScreenManager Class
  * @version 0.1
  * @date 2023-07-12
  *
  * @copyright Copyright (c) 2023
  *
  */
-#ifndef FXWINDOWMANAGER_H
-#define FXWINDOWMANAGER_H
+#ifndef FXSCREENMANAGER_H
+#define FXSCREENMANAGER_H
 
 #include "Includes.h"
-#include "FXWindow.h"
+#include "FXScreen.h"
 #include "FXScreens.h"
 
 #define _HANDLEWINDOWINSTANCE(x, y)                                    \
@@ -37,31 +37,20 @@
 #include "ExampleScreen.h"
 /* END USER SCREEN INCLUSION */
 
-class FXWindowManager
+class FXScreenManager
 {
-public:
-    enum Windows
-    {
-        /* BEGIN USER WINDOW NAME DEFINITIONS */
-        MAIN,
-        CONFIG,
-        PWD,
-        /* END USER WINDOW NAME DEFINITIONS */
-        TOT_WINDOWS
-    };
-
 private:
     TFT_eSPI *tft;
     uint16_t touchx;
     uint16_t touchy;
     bool touchpressed = false;
-    FXWindow *currentwindowptr = NULL;
+    FXScreen *currentwindowptr = NULL;
     FXScreens currentwindowidx = FXScreens::MAIN;
     bool changereq = false;
     size_t changeto = 0;
 
 public:
-    FXWindowManager(TFT_eSPI *t)
+    FXScreenManager(TFT_eSPI *t)
     {
         tft = t;
     }

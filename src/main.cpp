@@ -9,10 +9,10 @@
  * 
  */
 #include "Includes.h"
-#include "FXWindowManager.h"
+#include "FXScreenManager.h"
 
 TFT_eSPI tft = TFT_eSPI();
-FXWindowManager mgr(&tft);
+FXScreenManager mgr(&tft);
 volatile long debounce_ms = 0;
 long debounce_ms_threshold = 500;
 

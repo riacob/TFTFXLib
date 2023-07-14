@@ -11,7 +11,7 @@
 #ifndef PWDSCREEN_H
 #define PWDCREEN_H
 
-#include "FXWindow.h"
+#include "FXScreen.h"
 #include "FXButton.h"
 #include "FXGraph.h"
 #include "FXHProgressBar.h"
@@ -20,15 +20,15 @@
 
 namespace PwdScreenNamespace
 {
-    FXWindow *w;
+    FXScreen *w;
     /* USER CALLBACKS BEGIN */
     /* USER CALLBACKS END */
 };
 
-class PwdScreen : public FXWindow
+class PwdScreen : public FXScreen
 {
 private:
-    FXWindow *w;
+    FXScreen *w;
 
 public:
     /* PUBLIC USER METHODS AND PARAMETERS BEGIN */
@@ -37,9 +37,9 @@ private:
     /* PRIVATE USER METHODS AND PARAMETERS BEGIN */
     /* PRIVATE USER METHODS AND PARAMETERS END*/
 public:
-    PwdScreen(TFT_eSPI *t, FXScreens windowID) : FXWindow(t, windowID)
+    PwdScreen(TFT_eSPI *t, FXScreens windowID) : FXScreen(t, windowID)
     {
-        w = (FXWindow *)this;
+        w = (FXScreen *)this;
         PwdScreenNamespace::w = w;
     }
     ~PwdScreen() {

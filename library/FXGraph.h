@@ -119,7 +119,7 @@ private:
     }
 
 public:
-    FXGraph(FXWindow *parent) : FXWidget(parent)
+    FXGraph(FXScreen *parent) : FXWidget(parent)
     {
     }
     /**

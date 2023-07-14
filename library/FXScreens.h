@@ -1,5 +1,5 @@
 /**
- * @file FXWindows.h
+ * @file FXScreens.h
  * @author your name (you@domain.com)
  * @brief 
  * @version 0.1
@@ -8,8 +8,8 @@
  * @copyright Copyright (c) 2023
  * 
  */
-#ifndef FXScreens_H
-#define FXScreens_H
+#ifndef FXSCREENS_H
+#define FXSCREENS_H
 
 enum class FXScreens {
     /* BEGIN SECTION WINDOWS */

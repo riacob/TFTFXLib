@@ -11,7 +11,7 @@
 #ifndef MYSCREEN2_H
 #define MYSCREEN2_H
 
-#include "FXWindow.h"
+#include "FXScreen.h"
 #include "FXScreens.h"
 #include "FXButton.h"
 
@@ -19,7 +19,7 @@
 
 namespace MyScreen2Namespace
 {
-    FXWindow *w;
+    FXScreen *w;
     /* USER CALLBACKS BEGIN */
     void btn2callback()
     {
@@ -30,10 +30,10 @@ namespace MyScreen2Namespace
     /* USER CALLBACKS END */
 };
 
-class MyScreen2 : public FXWindow
+class MyScreen2 : public FXScreen
 {
 private:
-    FXWindow *w;
+    FXScreen *w;
 
 public:
     /* PUBLIC USER METHODS AND PARAMETERS BEGIN */
@@ -42,9 +42,9 @@ private:
     /* PRIVATE USER METHODS AND PARAMETERS BEGIN */
     /* PRIVATE USER METHODS AND PARAMETERS END*/
 public:
-    MyScreen2(TFT_eSPI *t, FXScreens windowID) : FXWindow(t, windowID)
+    MyScreen2(TFT_eSPI *t, FXScreens windowID) : FXScreen(t, windowID)
     {
-        w = (FXWindow *)this;
+        w = (FXScreen *)this;
         MyScreen2Namespace::w = w;
     }
     ~MyScreen2() {

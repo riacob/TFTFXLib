@@ -12,13 +12,13 @@
 #define FXWIDGET_H
 
 #include "Includes.h"
-#include "FXWindow.h"
+#include "FXScreen.h"
 
 class FXWidget
 {
 private:
     // Parent window (the window in which the widget is present)
-    FXWindow *parent;
+    FXScreen *parent;
 
 protected:
     // TFT sprite object reference
@@ -38,7 +38,7 @@ protected:
     // Background color of the whole sprite
     uint32_t widgetbgcolor = TFT_WHITE;
 
-    FXWidget(FXWindow *w)
+    FXWidget(FXScreen *w)
     {
         parent = w;
     }

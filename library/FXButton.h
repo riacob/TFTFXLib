@@ -13,7 +13,7 @@
 
 #include "Includes.h"
 #include "FXWidget.h"
-#include "FXWindow.h"
+#include "FXScreen.h"
 
 class FXButton : public FXWidget
 {
@@ -88,7 +88,7 @@ public:
      *
      * @param parent: The window in which the button (widget) is in
      */
-    FXButton(FXWindow *parent) : FXWidget(parent)
+    FXButton(FXScreen *parent) : FXWidget(parent)
     {
     }
 

@@ -26,7 +26,7 @@ protected:
     bool inverted = false;
 
 public:
-    FXVProgressBar(FXWindow *parent) : FXWidget(parent)
+    FXVProgressBar(FXScreen *parent) : FXWidget(parent)
     {
     }
     /**
