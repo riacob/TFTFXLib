@@ -4,8 +4,8 @@
 
 ### Codeguards and sections
 
-## Adding FXScreen to FXWindows.h
-## Adding FXScreen to FXWindowManager.h
+## Adding FXScreen to FXScreens.h
+## Adding FXScreen to FXScrens.h
 
  * @details 
  * CREATING A SCREEN:\n

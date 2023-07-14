@@ -1,5 +1,5 @@
 # Using the library
-The library is still in early development, thus the documentation is practically non-existant.
+The library is still in early development, thus the [documentation](https://www.github.com/riacob/TFTFXLib/docs/) is practically non-existant.
 <br>
 Refer to the comments in the code (especially in *screen*.h and FXWindowManager.h) to understand how to setup the library to create windows with widgets.
 <br>
