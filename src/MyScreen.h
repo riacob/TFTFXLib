@@ -73,11 +73,12 @@ public:
         pbar.setSize(80, 20);
         pbar.setMultiplier(random(0, 999) / 1000.0);
         pbar.setCornerRadius(8);
+        pbar.invert();
 
         pbar2.setPosition(0, 0);
         pbar2.setSize(20, 80);
         pbar2.setMultiplier(random(0, 999) / 1000.0);
-        pbar2.invert();
+        //pbar2.invert();
 
         graph.setPosition(63, 250);
         graph.setSize(200, 120);
