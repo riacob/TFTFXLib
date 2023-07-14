@@ -1,7 +1,7 @@
 {
   "name": "TFTFXLib",
   "keywords": "TFT, LCD, SPI, TFT_eSPI, TFT_eSprite",
-  "description": "A UI/UX library for Bodmer's TFT_eSPI. This library is still in early development, USE AT YOUR OWN RISK.",
+  "description": "A UI/UX library for Bodmer's TFT_eSPI. Allows user to create custom screens and widgets.",
   "version": "1.0.0",
   "repository":
   {
