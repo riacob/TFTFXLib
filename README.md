@@ -21,6 +21,6 @@ Maybe check out [the TODO list](https://www.github.com/riacob/TFTFXLib/docs/TODO
 # Credits
 
 # Sponsors
-##### [PCBWay](https://PCBWay.com/)
+### [PCBWay](https://PCBWay.com/)
 Thanks to excellent service and quality for providing the PCBs for this project.
 <to complete>
