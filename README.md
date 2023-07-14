@@ -1,6 +1,7 @@
 Please use the ["Discussions"]() facility for Q&A and such. Use the ["Issues"]() section only for bug reports and problems with the library. Thank you!
 
-## News (Updated DD/MM/YYYY)
+## News
+### Updated DD/MM/YYYY
 
 ## Hardware
 
