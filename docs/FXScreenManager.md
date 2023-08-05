@@ -10,7 +10,7 @@ Suppose we want to add a "Settings" screen.
 ...
 /* END SECTION INCLUDE_SCREENS */
 ```
-2. Call the _HANDLEWINDOWINSTANCE macro inside the codeguard section "INSTANCE_HANDLERS", first parameter is the class name, second parameter is the element of the FXScreens enum. If the naming conventions were followed, the first parameter should be SettingsScreen and the second FXScreens::SETTINGS
+2. Call the "_HANDLEWINDOWINSTANCE" macro inside the codeguard section "INSTANCE_HANDLERS", first parameter is the class name, second parameter is the element of the FXScreens enum. If the naming conventions were followed, the first parameter should be "SettingsScreen" and the second "FXScreens::SETTINGS"
 ```cpp
     void doTick()
     {
