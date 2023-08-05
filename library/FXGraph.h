@@ -123,7 +123,7 @@ public:
     {
     }
     /**
-     * @brief Renders the graph window
+     * @brief Renders the graph widget
      *
      */
     void draw()
@@ -142,7 +142,7 @@ public:
     }
 
     /**
-     * @brief Sets the size of the graph window
+     * @brief Sets the size of the graph widget
      *
      * @param sizeX: X size
      * @param sizeY: Y size
@@ -154,7 +154,7 @@ public:
     }
 
     /**
-     * @brief Sets the position of the graph window
+     * @brief Sets the position of the graph widget
      *
      * @param x: X position
      * @param y: Y position

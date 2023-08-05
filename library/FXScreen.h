@@ -17,9 +17,9 @@
 class FXScreen
 {
 protected:
-    bool windowChangeRequested = false;
+    bool screenChangeRequested = false;
     FXScreens targetWindow;
-    FXScreens wid;
+    FXScreens sid;
     // Last X touch point
     uint16_t touchx = 0;
     // Last Y touch point
@@ -32,9 +32,9 @@ public:
     TFT_eSPI *tft;
 
 public:
-    FXScreen(TFT_eSPI *t, FXScreens windowID)
+    FXScreen(TFT_eSPI *t, FXScreens screenID)
     {
-        wid = windowID;
+        sid = screenID;
         tft = t;
     }
     virtual void drawUI() {}
@@ -46,24 +46,24 @@ public:
     }
     bool wasJumpRequested()
     {
-        return windowChangeRequested;
+        return screenChangeRequested;
     }
     FXScreens getNewWindow()
     {
         return targetWindow;
     }
-    void jumpToWindow(FXScreens idx)
+    void jumpToScreen(FXScreens idx)
     {
-        windowChangeRequested = true;
+        screenChangeRequested = true;
         targetWindow = idx;
     }
     void suppressJumpRequest()
     {
-        windowChangeRequested = false;
+        screenChangeRequested = false;
     }
-    FXScreens getWindowID()
+    FXScreens getScreenID()
     {
-        return wid;
+        return sid;
     }
     void resetTouch(){
         touchx = 0;

@@ -17,7 +17,7 @@
 class FXWidget
 {
 private:
-    // Parent window (the window in which the widget is present)
+    // Parent screen (the screen in which the widget is present)
     FXScreen *parent;
 
 protected:

@@ -4,9 +4,10 @@ Please use the ["Discussions"]() facility for Q&A and such. Use the ["Issues"]()
 ### Updated DD/MM/YYYY
 
 ## Hardware
+[Work-in progress development board](https://oshwlab.com/iacob.riccardo/esp32_tft_4inch)
 
 ## TFTFXLib
-The library is still in early development, thus the [documentation](https://www.github.com/riacob/TFTFXLib/docs/) is scarce.
+The library is still in early development, thus the [documentation](https://github.com/riacob/TFTFXLib/tree/main/docs) is scarce.
 
 ## FXScreens
 
@@ -17,7 +18,7 @@ The library is still in early development, thus the [documentation](https://www.
 ## Contributing
 Users are more than welcome to contribute, testing the library and introducing new widgets! Just submit a pull request with your widget, and you will be credited in the code and here!
 <br>
-Maybe check out [the TODO list](https://www.github.com/riacob/TFTFXLib/docs/TODO.md) if you want to contribute to my ideas. Make sure to check that the idea wasn't already developed and I forgot to remove it, but, if that's the case, and if you think your implementation might be better, feel free to submit it.
+Maybe check out [the TODO list](https://github.com/riacob/TFTFXLib/tree/main/docs/TODO.md) if you want to contribute to my ideas. Make sure to check that the idea wasn't already developed and I forgot to remove it, but, if that's the case, and if you think your implementation might be better, feel free to submit it.
 
 ## Credits
 

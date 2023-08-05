@@ -11,6 +11,10 @@
 #ifndef FXSCREENS_H
 #define FXSCREENS_H
 
+/**
+ * @brief Enumeration containing all screens
+ * 
+ */
 enum class FXScreens {
     /* BEGIN SECTION WINDOWS */
     MAIN,

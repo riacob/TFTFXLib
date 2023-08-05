@@ -86,7 +86,7 @@ public:
     /**
      * @brief Constructs a new FXButton object
      *
-     * @param parent: The window in which the button (widget) is in
+     * @param parent: The screen in which the button (widget) is in
      */
     FXButton(FXScreen *parent) : FXWidget(parent)
     {

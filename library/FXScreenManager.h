@@ -16,17 +16,17 @@
 #include "FXScreens.h"
 
 #define _HANDLEWINDOWINSTANCE(x, y)                                                    \
-    if (currentwindowidx == y)                                                         \
+    if (currentScreenIdx == y)                                                         \
     {                                                                                  \
-        if (!currentwindowptr)                                                         \
+        if (!currentScreenPtr)                                                         \
         {                                                                              \
-            currentwindowptr = new x(tft, y);                                          \
-            currentwindowptr->tft->fillScreen(currentwindowptr->getBackgroundColor()); \
+            currentScreenPtr = new x(tft, y);                                          \
+            currentScreenPtr->tft->fillScreen(currentScreenPtr->getBackgroundColor()); \
         }                                                                              \
-        if (currentwindowptr && currentwindowptr->getWindowID() != y)                  \
+        if (currentScreenPtr && currentScreenPtr->getScreenID() != y)                  \
         {                                                                              \
-            delete currentwindowptr, currentwindowptr = new x(tft, y);                 \
-            currentwindowptr->tft->fillScreen(currentwindowptr->getBackgroundColor()); \
+            delete currentScreenPtr, currentScreenPtr = new x(tft, y);                 \
+            currentScreenPtr->tft->fillScreen(currentScreenPtr->getBackgroundColor()); \
         }                                                                              \
     }
 
@@ -43,16 +43,24 @@ private:
     uint16_t touchx;
     uint16_t touchy;
     bool touchpressed = false;
-    FXScreen *currentwindowptr = NULL;
-    FXScreens currentwindowidx = FXScreens::MAIN;
+    FXScreen *currentScreenPtr = NULL;
+    FXScreens currentScreenIdx = FXScreens::MAIN;
     bool changereq = false;
     size_t changeto = 0;
 
 public:
+    /**
+     * @brief Construct a new FXScreenManager object
+     * 
+     * @param t: Pointer to the TFT_eSPI object
+     */
     FXScreenManager(TFT_eSPI *t)
     {
         tft = t;
     }
+    /**
+     * @brief Ticks the FXScreenManager, updating the current window if needed (or touched), or jumping to another window
+     */
     void doTick()
     {
         /* BEGIN USER WINDOW ACTIONS DEFINITIONS */
@@ -63,28 +71,46 @@ public:
         if (touchpressed)
         {
             tft->getTouch(&touchx, &touchy);
-            currentwindowptr->setTouchPos(touchx, touchy);
+            currentScreenPtr->setTouchPos(touchx, touchy);
             touchpressed = false;
         }
-        currentwindowptr->drawUI();
-        if (currentwindowptr->wasJumpRequested())
+        currentScreenPtr->drawUI();
+        if (currentScreenPtr->wasJumpRequested())
         {
-            currentwindowidx = currentwindowptr->getNewWindow();
-            currentwindowptr->suppressJumpRequest();
+            currentScreenIdx = currentScreenPtr->getNewWindow();
+            currentScreenPtr->suppressJumpRequest();
         }
     }
+    /**
+     * @brief ISR triggers this method, forcing the FXScreenManager to update the touch coordinates 
+     */
     void updateTouch()
     {
         touchpressed = true;
     }
+    /**
+     * @brief Sets (jumps to) the desired window
+     * 
+     * @param windowIdx 
+     */
     void setWindow(FXScreens windowIdx)
     {
-        currentwindowidx = windowIdx;
+        currentScreenIdx = windowIdx;
     }
+    /**
+     * @brief Gets the X touch position
+     * 
+     * @return uint16_t: X touch position
+     */
     uint16_t getTouchX()
     {
         return touchx;
     }
+    /**
+     * @brief Gets the Y touch position
+     * 
+     * @return uint16_t: Y touch position
+     */
     uint16_t getTouchY()
     {
         return touchy;

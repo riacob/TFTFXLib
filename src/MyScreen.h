@@ -26,7 +26,7 @@ namespace MyScreenNamespace
     {
         // debugln("[myscreen.h] btn2 callback");
         w->tft->fillScreen(TFT_WHITE);
-        w->jumpToWindow(FXScreens::CONFIG);
+        w->jumpToScreen(FXScreens::CONFIG);
     }
     /* USER CALLBACKS END */
 };
