@@ -19,7 +19,7 @@ class FXScreen
 protected:
     bool screenChangeRequested = false;
     FXScreens targetScreen;
-    FXScreens sid;
+    FXScreens currentScreen;
     // Last X touch point
     uint16_t touchx = 0;
     // Last Y touch point
@@ -40,7 +40,7 @@ public:
      */
     FXScreen(TFT_eSPI *t, FXScreens screenID)
     {
-        sid = screenID;
+        currentScreen = screenID;
         tft = t;
     }
 
@@ -111,7 +111,7 @@ public:
      */
     FXScreens getScreenID()
     {
-        return sid;
+        return currentScreen;
     }
 
     /**

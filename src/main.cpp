@@ -28,18 +28,20 @@ void touchISR()
 void setup()
 {
   tft.init();
-  uint16_t calData[5] = {338, 3387, 343, 3489, 4} ;
+  /* BEGIN SECTION TOUCH_CALIBRATION */
+  uint16_t calData[5] = {338, 3387, 343, 3489, 4};
+  /* END SECTION TOUCH_CALIBRATION */
   tft.setTouch(calData);
   tft.setRotation(0);
   attachInterrupt(22, touchISR, FALLING);
   Serial.begin(115200);
-  /* BEGIN USER SETUP CODE */
-  /* END USER SETUP CODE */
+  /* BEGIN SECTION USER_SETUP */
+  /* END SECTION USER_SETUP */
 }
 
 void loop()
 {
   mgr.doTick();
-  /* BEGIN USER LOOP CODE */
-  /* END USER LOOP CODE */
+  /* BEGIN SECTION USER_LOOP */
+  /* END SECTION USER_LOOP */
 }

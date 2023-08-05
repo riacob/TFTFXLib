@@ -7,7 +7,7 @@ Please use the ["Discussions"]() facility for Q&A and such. Use the ["Issues"]()
 [Work-in progress development board](https://oshwlab.com/iacob.riccardo/esp32_tft_4inch)
 
 ## TFTFXLib
-The library is still in early development, thus the [documentation](https://github.com/riacob/TFTFXLib/tree/main/docs) is scarce.
+The library is still in early development, thus the [documentation](https://github.com/riacob/TFTFXLib/tree/main/docs/DOCS.md) is scarce.
 
 ## FXScreens
 
