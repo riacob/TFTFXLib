@@ -17,7 +17,7 @@ Please note you can have only a screen with a given name.
 <br>
 "Settings1" and "Settings2" would be fine, but two "Settings" cannot coexist.
 
-1. Rename the header file to "SettingsFXScreen.h"
+1. Rename the header file to "SettingsScreen.h"
 2. Replace the include guards
 ```cpp
 #ifndef SETTINGSSCREEN_H
@@ -37,9 +37,6 @@ Used to include the widgets the screen uses.
 ...
 ```
 
-### 🟢 NAMESPACE_DEFINITIONS
-Used to define variables and constants which live inside the global namespace ExampleScreenNamespace.
-
 ### 🟢 NAMESPACE_CALLBACKS
 Used to define callbacks which live inside the global namespace ExampleScreenNamespace (widgets' callbacks to be defined here).
 ```cpp
@@ -47,21 +44,6 @@ void myButtonCallback() {
     w->jumpToScreen(FXScreens::MAIN);
 }
 ```
-
-### 🟢 PROTECTED_DEFINITIONS
-Used to define protected variables and constants which live inside the class ExampleScreen.
-
-### 🟢 PUBLIC_DEFINITIONS
-Used to define public variables and constants which live inside the class ExampleScreen.
-
-### 🟢 PRIVATE_DEFINITIONS
-Used to define private variables and constants which live inside the class ExampleScreen.
-
-### 🟢 CONSTRUCTOR
-Used to instantiate additional user-defined objects at the class' initialization.
-
-### 🟢 DESTRUCTOR
-Used to de-instantiate additional user-defined objects at the class' deinitialization.
 
 ### 🟢 MAIN
 Used to write the main screen code.

@@ -63,7 +63,7 @@ public:
         currentwindowptr->drawUI();
         if (currentwindowptr->wasJumpRequested())
         {
-            currentwindowidx = currentwindowptr->getNewWindow();
+            currentwindowidx = currentwindowptr->getNewScreen();
             currentwindowptr->suppressJumpRequest();
         }
     }
