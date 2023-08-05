@@ -1,16 +1,42 @@
 # WORK IN PROGRESS DOCUMENTATION - WILL BE CONVERTED TO WIKI
 
 # FXScreen
-### 👉 SECTION INCLUDE_WIDGETS
-Used to include the widget the screen uses.
+### 🟢 INCLUDE_WIDGETS
+Used to include the widgets the screen uses.
 ```cpp
 #include <FXButton.h>
-#include <FXGraph.h>
 ...
 ```
-### 👉 SECTION NAMESPACE_DEFINITIONS
-### 👉 SECTION NAMESPACE_CALLBACKS
-
+### 🟢 NAMESPACE_DEFINITIONS
+Used to define variables and constants which live inside the global namespace ExampleScreenNamespace.
+### 🟢 NAMESPACE_CALLBACKS
+Used to define callbacks which live inside the global namespace ExampleScreenNamespace (widgets' callbacks to be defined here).
+```cpp
+void myButtonCallback() {
+    w->jumpToScreen(FXScreens::MAIN);
+}
+```
+### 🟢 PROTECTED_DEFINITIONS
+Used to define protected variables and constants which live inside the class ExampleScreen.
+### 🟢 PUBLIC_DEFINITIONS
+Used to define public variables and constants which live inside the class ExampleScreen.
+### 🟢 PRIVATE_DEFINITIONS
+Used to define private variables and constants which live inside the class ExampleScreen.
+### 🟢 CONSTRUCTOR
+Used to instantiate additional user-defined objects at the class' initialization.
+### 🟢 DESTRUCTOR
+Used to de-instantiate additional user-defined objects at the class' deinitialization.
+### 🟢 MAIN
+Used to write the main screen code.
+Runs user methods to instantiate, draw and edit widgets.
+```cpp
+FXButton myButton(w);
+myButton.setPressedCallback(ExampleScreenNamespace::myButtonCallback);
+myButton.setSize(50,50);
+myButton.setPosition(20,20);
+myButton.draw();
+myButton.touchAt(touchx, touchy);
+```
 
 # FXWidget
 
