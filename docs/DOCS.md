@@ -1,11 +1,12 @@
 # WORK IN PROGRESS DOCUMENTATION - WILL BE CONVERTED TO WIKI
 
 # FXScreen
-#### SECTION INCLUDE_WIDGETS
+#### 👉 SECTION INCLUDE_WIDGETS
 Used to include the widget the screen uses.
 ```cpp
 #include <FXButton.h>
 #include <FXGraph.h>
+...
 ```
 
 # FXWidget
