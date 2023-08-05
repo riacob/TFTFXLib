@@ -7,7 +7,9 @@ Please use the ["Discussions"]() facility for Q&A and such. Use the ["Issues"]()
 [Work-in progress development board](https://oshwlab.com/iacob.riccardo/esp32_tft_4inch)
 
 ## TFTFXLib
-The library is still in early development, thus the [documentation](https://github.com/riacob/TFTFXLib/tree/main/docs/DOCS.md) is scarce.
+The library is still in early development, thus the [documentation](https://github.com/riacob/TFTFXLib/tree/main/docs/) is scarce.
+<br>
+The user-editable files are organized using codeguards. In each dedicated section of the documentation, the user will be able to read how each section of the code is meant to work and to be reimplemented by the user.
 
 ## FXScreens
 

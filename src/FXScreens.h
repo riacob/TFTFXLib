@@ -17,11 +17,11 @@
  */
 enum class FXScreens
 {
-    /* BEGIN SECTION WINDOWS */
+    /* BEGIN SECTION SCREENS */
     MAIN,
     CONFIG,
     PWD,
-    /* END SECTION WINDOWS */
+    /* END SECTION SCREENS */
     TOT_SCREENS
 };
 
