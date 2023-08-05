@@ -4,9 +4,9 @@
  * @brief Global inclusions and dependencies
  * @version 0.1
  * @date 2023-07-12
- * 
+ *
  * @copyright Copyright (c) 2023
- * 
+ *
  */
 #ifndef INCLUDES_H
 #define INCLUDES_H

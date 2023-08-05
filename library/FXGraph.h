@@ -119,11 +119,17 @@ private:
     }
 
 public:
+    /**
+     * @brief Constructs a new FXGraph object
+     * 
+     * @param parent: Parent screen
+     */
     FXGraph(FXScreen *parent) : FXWidget(parent)
     {
     }
+
     /**
-     * @brief Renders the graph widget
+     * @brief Renders the graph on the screen
      *
      */
     void draw()
@@ -177,63 +183,144 @@ public:
         yvalscnt = datapoints;
     }
 
+    /**
+     * @brief Connects the individual dots (pixels) in the graph
+     */
     void connectDots()
     {
         connectdots = true;
     }
+
+    /**
+     * @brief Disconnects the individual dots (pixels) in the graph
+     */
     void disconnectDots()
     {
         connectdots = false;
     }
+
+    /**
+     * @brief Sets the background color
+     * 
+     * @param color 
+     */
     void setGraphBackgroundColor(uint32_t color)
     {
         bgcolor = color;
     }
+
+    /**
+     * @brief Sets the graph color 
+     * 
+     * @param color 
+     */
     void setGraphLineColor(uint32_t color)
     {
         linecolor = color;
     }
+
+    /**
+     * @brief Sets the detail color
+     * 
+     * @param color 
+     */
     void setGraphDetailColor(uint32_t color)
     {
         detailcolor = color;
     }
+
+    /**
+     * @brief Sets the border color
+     * 
+     * @param color 
+     */
     void setGraphBorderColor(uint32_t color)
     {
         bordercolor = color;
     }
-    float getBiggestValue()
+
+    /**
+     * @brief Gets the biggest absolute value
+     * 
+     * @return float 
+     */
+    float getBiggestAbsoluteValue()
     {
         return biggestval;
     }
-    float getSmallestValue()
+
+    /**
+     * @brief Gets the smallest absolute value
+     * 
+     * @return float 
+     */
+    float getSmallestAbsoluteValue()
     {
         return smallestval;
     }
-    float getAverageValue()
+
+    /**
+     * @brief Gets the average absolute value
+     * 
+     * @return float 
+     */
+    float getAverageAbsoluteValue()
     {
         return avgval;
     }
+
+    /**
+     * @brief Gets the y offset (position)
+     * 
+     * @return float 
+     */
     float getOffset()
     {
         return offset;
     }
+
+    /**
+     * @brief Enables auto y-offset
+     */
     void setAutoOffset()
     {
         autooffset = true;
     }
+
+    /**
+     * @brief Sets a manual y-offset
+     * 
+     * @param ofst 
+     */
     void setManualOffset(float ofst)
     {
         autooffset = false;
         offset = ofst;
     }
+
+    /**
+     * @brief Gets the scaling factor for the y values
+     * 
+     * @return float 
+     */
     float getScalingFactor()
     {
         return scalingfactor;
     }
+
+    /**
+     * @brief Enables auto y-scaling
+     */
     void setAutoScaling()
     {
         autoscaling = true;
     }
+
+    /**
+     * @brief Sets a manual y-scaling
+     * 
+     * @param scaling 
+     */
     void setManualScaling(float scaling)
     {
         autoscaling = false;

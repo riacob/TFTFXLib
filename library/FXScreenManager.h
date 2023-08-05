@@ -58,6 +58,7 @@ public:
     {
         tft = t;
     }
+
     /**
      * @brief Ticks the FXScreenManager, updating the current window if needed (or touched), or jumping to another window
      */
@@ -77,10 +78,11 @@ public:
         currentScreenPtr->drawUI();
         if (currentScreenPtr->wasJumpRequested())
         {
-            currentScreenIdx = currentScreenPtr->getNewWindow();
+            currentScreenIdx = currentScreenPtr->getNewScreen();
             currentScreenPtr->suppressJumpRequest();
         }
     }
+
     /**
      * @brief ISR triggers this method, forcing the FXScreenManager to update the touch coordinates 
      */
@@ -88,6 +90,7 @@ public:
     {
         touchpressed = true;
     }
+
     /**
      * @brief Sets (jumps to) the desired window
      * 
@@ -97,6 +100,7 @@ public:
     {
         currentScreenIdx = windowIdx;
     }
+
     /**
      * @brief Gets the X touch position
      * 
@@ -106,6 +110,7 @@ public:
     {
         return touchx;
     }
+
     /**
      * @brief Gets the Y touch position
      * 

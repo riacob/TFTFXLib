@@ -20,7 +20,6 @@ class FXButton : public FXWidget
 public:
     /**
      * @brief Button shapes
-     *
      */
     enum class FXButtonStyles
     {
@@ -32,17 +31,18 @@ public:
 
     /**
      * @brief Contents of the button
-     *
      */
     enum class FXButtonContentTypes
     {
         ICON,
         TEXT
     };
+
 private:
     // Callback pointer on button press
     void (*pressedcallback)();
     bool pressedcallbackset = false;
+
 protected:
     // Size X of the button inside the sprite
     uint16_t btnsizex = 0;
@@ -240,7 +240,10 @@ public:
         // Button press
         if (x > widgetstartx && x < widgetstartx + btnsizex && y > widgetstarty && y < widgetstarty + btnsizey)
         {
-            if (pressedcallbackset) {pressedcallback();}
+            if (pressedcallbackset)
+            {
+                pressedcallback();
+            }
         }
     }
 

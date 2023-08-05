@@ -35,9 +35,19 @@ protected:
     bool _state = false;
 
 public:
+    /**
+     * @brief Constructs a new FXHSwitch object
+     *
+     * @param parent
+     */
     FXHSwitch(FXScreen *parent) : FXWidget(parent)
     {
     }
+
+    /**
+     * @brief Renders the switch on the screen
+     *
+     */
     void draw()
     {
         createWidget();
@@ -64,6 +74,7 @@ public:
         drawWidget();
         deleteWidget();
     }
+
     /**
      * @brief Sets the size of the switch
      *
@@ -111,18 +122,28 @@ public:
         if (x > widgetstartx && x < widgetstartx + widgetsizex && y > widgetstarty && y < widgetstarty + widgetsizey)
         {
             // If turning OFF
-            if (_state) {
+            if (_state)
+            {
                 _state = 0;
-                if (switchedoffcallbackset) {switchedoffcallback();}
-                
+                if (switchedoffcallbackset)
+                {
+                    switchedoffcallback();
+                }
             }
             // If turning ON
-            else {
+            else
+            {
                 _state = 1;
-                if(switchedoncallbackset) {switchedoncallback();}
+                if (switchedoncallbackset)
+                {
+                    switchedoncallback();
+                }
             }
             // Always
-            if(pressedcallbackset) {pressedcallback();}
+            if (pressedcallbackset)
+            {
+                pressedcallback();
+            }
         }
     }
 };

@@ -26,11 +26,17 @@ protected:
     bool inverted = false;
 
 public:
+    /**
+     * @brief Constructs a new FXHProgressBar object
+     *
+     * @param parent: Parent screen
+     */
     FXHProgressBar(FXScreen *parent) : FXWidget(parent)
     {
     }
+
     /**
-     * @brief Renders the progress bar
+     * @brief Renders the progress bar on the screen
      *
      */
     void draw()

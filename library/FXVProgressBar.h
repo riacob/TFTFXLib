@@ -26,11 +26,17 @@ protected:
     bool inverted = false;
 
 public:
+    /**
+     * @brief Constructs a new FXVProgressBar object
+     *
+     * @param parent
+     */
     FXVProgressBar(FXScreen *parent) : FXWidget(parent)
     {
     }
+
     /**
-     * @brief Renders the progress bar
+     * @brief Renders the progress bar on the screen
      *
      */
     void draw()
@@ -54,6 +60,7 @@ public:
         drawWidget();
         deleteWidget();
     }
+    
     /**
      * @brief Sets the size of the progress bar
      *

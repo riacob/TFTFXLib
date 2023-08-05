@@ -38,17 +38,27 @@ protected:
     // Background color of the whole sprite
     uint32_t widgetbgcolor = TFT_WHITE;
 
+    /**
+     * @brief Constructs a new FXWidget object
+     *
+     * @param w: The parent screen
+     */
     FXWidget(FXScreen *w)
     {
         parent = w;
     }
+    
+    /**
+     * @brief Destroys the FXWidget object, and the TFT_eSprite in it contained
+     *
+     */
     ~FXWidget()
     {
         delete widget;
     }
+
     /**
      * @brief Creates instance of TFT_eSprite
-     * 
      */
     void createWidget()
     {
@@ -56,9 +66,9 @@ protected:
         widget->createSprite(widgetsizex, widgetsizey);
         isValid = true;
     }
+
     /**
      * @brief Pushes instance of TFT_eSprite to TFT
-     * 
      */
     void drawWidget()
     {
@@ -72,9 +82,9 @@ protected:
         }
         widget->pushSprite(widgetstartx, widgetstarty);
     }
+
     /**
-     * @brief Removes instance of TFT_eSprite
-     * 
+     * @brief Deletes instance of TFT_eSprite
      */
     void deleteWidget()
     {
@@ -89,7 +99,6 @@ protected:
 public:
     /**
      * @brief Makes the widget visible
-     *
      */
     void setWidgetVisible()
     {
@@ -97,7 +106,6 @@ public:
     }
     /**
      * @brief Makes the widget invisible
-     *
      */
     void setWidgetInvisible()
     {
@@ -123,7 +131,6 @@ public:
     }
     /**
      * @brief Clears the widget (by masking it with bgcolor)
-     * 
      */
     void clearWidget()
     {
