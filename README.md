@@ -3,6 +3,7 @@ Please use the ["Discussions"](https://github.com/riacob/TFTFXLib/discussions) f
 ## Hardware
 Work in progress OSS/OSHW development board [available here](https://oshwlab.com/iacob.riccardo/esp32_tft_4inch)
 ![PCB 3D Render](images/pcb_3d.png "PCB 3D Render")
+<br>
 Currently waiting for PCBWay to process the order. Updates will follow.
 Contact me if you are interested in buying the fully assembled board. Accepting preorders. Pricing TBD.
 
