@@ -25,5 +25,5 @@ Thanks to all the sponsors for supporting this project.
 Thanks to all my friends who helped me test and debug the project.
 
 ## Sponsors
-### [PCBWay](https://PCBWay.com/)
+### [PCBWay](https://pcbway.com/g/745Je3)
 Thanks to excellent service and quality for providing the PCBs for this project.
