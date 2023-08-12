@@ -2,7 +2,7 @@ Please use the ["Discussions"](https://github.com/riacob/TFTFXLib/discussions) f
 
 ## Hardware
 Work in progress OSS/OSHW development board [available here](https://oshwlab.com/iacob.riccardo/esp32_tft_4inch)
-![PCB 3D Render]('pcb_3dd.ong' "PCB 3D Render")
+![PCB 3D Render]('images/pcb_3d.png' "PCB 3D Render")
 
 ## TFTFXLib
 The idea of this library is to provide UI/UX functionality for [Bodmer's TFT_eSPI](https://github.com/Bodmer/TFT_eSPI) library.
