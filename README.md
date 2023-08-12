@@ -5,7 +5,8 @@ Work in progress OSS/OSHW development board [available here](https://oshwlab.com
 ![PCB 3D Render](images/pcb_3d.png "PCB 3D Render")
 <br>
 Currently waiting for PCBWay to process the order. Updates will follow.
-Contact me if you are interested in buying the fully assembled board. Accepting preorders. Pricing TBD.
+<br>
+Contact me if you are interested in buying the fully assembled board, Pricing TBD.
 
 ## TFTFXLib
 The idea of this library is to provide UI/UX functionality for [Bodmer's TFT_eSPI](https://github.com/Bodmer/TFT_eSPI) library.
